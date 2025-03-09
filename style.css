@@ -17,6 +17,14 @@ body {
     text-align: center; /* Centers content */
 }
 
+.about-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.8); /* Dark, transparent background */
+    border-radius: 10px;
+}
+
 /* ====== HEADER STYLE SETTUP ====== */
 header {
     background-color: rgba(45, 30, 15, 0.9); /* Dark brown with slight transparency */
@@ -29,6 +37,19 @@ header h1 {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5); /* Soft gold glow */
+}
+
+h2 {
+    color: #c9a86a; /* Brass-Gold */
+    text-transform: uppercase;
+    border-bottom: 2px solid #c9a86a;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+    color: #ddd;
 }
 
 /* ====== NAVIGATION MENU ====== */
