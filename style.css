@@ -28,13 +28,14 @@ body {
 
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    width: 1707px;
-    height: 1228px;
-    background: url('Attachments/homepageimage/bkgd.png') no-repeat center;
+    position: fixed; /* Keeps it fixed, even when scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background: url('Attachments/homepageimage/bkgd.png') no-repeat center center fixed;
     background-size: cover;
+    z-index: -1; 
 }
 
 /* ELEVATOR DOOR ANIMATION SETUP */
