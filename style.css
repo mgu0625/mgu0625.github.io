@@ -1,4 +1,4 @@
-/* ====== IMPORTING CUSTOM FONT ====== */
+/* IMPORTING CUSTOM FONT SETUP */
 @font-face {
     font-family: 'TypewriterMomVibe';
     src: url('Attachments/typewritermomvibe.ttf') format('truetype');
@@ -6,79 +6,343 @@
     font-style: normal;
 }
 
-/* ====== GENERAL STYLE SETTUP ====== */
+/* GENERAL STYLE SETTUP */
 body {
     font-family: 'TypewriterMomVibe', serif; /* Default font */
     color: #c9a86a; /* Brass-gold text */
-    background-image: url('Attachments/websitebackgroundpattern.jpg'); /* Background pattern */
-    background-size: 500px 500px; /* Matches your Figma design */
-    background-repeat: repeat; /* Tiling effect */
-    background-position: center center; /* Keeps it centered */
-    text-align: center; /* Centers content */
+    background-color: #3a2113; /* Dark brown background */
+    background-image: url('Attachments/websitebackgroundpattern.jpg');
+    background-size: 500px 500px;
+    background-repeat: repeat;
+    background-position: center;
+    text-align: center;
+    overflow: hidden;
+    animation: fadeToCenter 5s infinite alternate;
 }
 
-.about-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background: rgba(20, 20, 20, 0.8); /* Dark, transparent background */
-    border-radius: 10px;
+@keyframes fadeToCenter {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.5; }
 }
 
-/* ====== HEADER STYLE SETTUP ====== */
-header {
-    background-color: rgba(45, 30, 15, 0.9); /* Dark brown with slight transparency */
-    padding: 20px;
-    border-bottom: 4px solid #c9a86a; /* Brass border */
+/* ELEVATOR CONTAINER SETUP */
+.elevator-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 1707px;
+    height: 1228px;
+    background: url('Attachments/homepageimage/bkgd.png') no-repeat center;
+    background-size: cover;
 }
 
-header h1 {
-    font-size: 36px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.5); /* Soft gold glow */
+/* ELEVATOR DOOR ANIMATION SETUP */
+.elevator-door {
+    position: absolute;
+    width: 618px;
+    height: 1043px;
+    top: 129px;
+    left: 844px;
+    background: url('Attachments/homepageimage/door0.png') no-repeat center;
+    background-size: cover;
+    transition: transform 3.14s ease-in-out;
 }
 
-h2 {
-    color: #c9a86a; /* Brass-Gold */
-    text-transform: uppercase;
-    border-bottom: 2px solid #c9a86a;
-    padding-bottom: 5px;
+.elevator-door.open {
+    animation: openDoor 3.14s steps(5) forwards;
 }
 
-ul {
-    list-style-type: square;
-    margin-left: 20px;
-    color: #ddd;
+.elevator-door.close {
+    animation: closeDoor 3.14s steps(5) forwards;
 }
 
-/* ====== NAVIGATION MENU ====== */
-nav ul {
-    list-style-type: none;
-    padding: 0;
+@keyframes openDoor {
+    0% { background-image: url('Attachments/homepageimage/door0.png'); }
+    25% { background-image: url('Attachments/homepageimage/door1.png'); }
+    50% { background-image: url('Attachments/homepageimage/door2.png'); }
+    75% { background-image: url('Attachments/homepageimage/door3.png'); }
+    100% { background-image: url('Attachments/homepageimage/door4.png'); }
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+@keyframes closeDoor {
+    0% { background-image: url('Attachments/homepageimage/door4.png'); }
+    25% { background-image: url('Attachments/homepageimage/door3.png'); }
+    50% { background-image: url('Attachments/homepageimage/door2.png'); }
+    75% { background-image: url('Attachments/homepageimage/door1.png'); }
+    100% { background-image: url('Attachments/homepageimage/door0.png'); }
 }
 
-nav ul li a {
-    color: #c9a86a;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: 0.3s;
+/* FLASHING LAMP ANIMATION SETUP */
+
+/* Top Left Lamp */
+#topLeftLamp {
+    position: absolute;
+    width: 178px;
+    height: 188px;
+    top: 0px;
+    left: 180px;
+    background-image: url('Attachments/homepageimage/LUpLightsON.png');
 }
 
-nav ul li a:hover {
-    background-color: #c9a86a;
-    color: #2d1e0f;
-    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8); /* Glowing hover effect */
+/* Top Middle Lamp (Always ON) */
+#topMiddleLamp {
+    position: absolute;
+    width: 178px;
+    height: 188px;
+    top: 192px;
+    left: 288px;
+    background-image: url('Attachments/homepageimage/UpMidLight.png');
 }
 
-/* ====== FOOTER ====== */
+/* Top Right Lamp */
+#topRightLamp {
+    position: absolute;
+    width: 178px;
+    height: 188px;
+    top: 259px;
+    left: 351px;
+    background-image: url('Attachments/homepageimage/UpRightLight.png');
+}
+
+/* Bottom Left Lamp */
+#bottomLeftLamp {
+    position: absolute;
+    width: 266px;
+    height: 265px;
+    top: 948px;
+    left: 189px;
+    background-image: url('Attachments/homepageimage/LBottomLight.png');
+}
+
+/* Bottom Right Lamp */
+#bottomRightLamp {
+    position: absolute;
+    width: 266px;
+    height: 265px;
+    top: 942px;
+    left: 1535px;
+    background-image: url('Attachments/homepageimage/RBottomLight.png');
+}
+
+/* Flickering Animation */
+@keyframes lampFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Flicker Lamps on Elevator Open */
+.elevator-door.open ~ #topLeftLamp,
+.elevator-door.open ~ #topRightLamp,
+.elevator-door.open ~ #bottomLeftLamp,
+.elevator-door.open ~ #bottomRightLamp {
+    animation: lampFlicker 0.5s infinite alternate;
+}
+
+/* Ensure Top Middle Lamp Always Stays On */
+.elevator-door.open ~ #topMiddleLamp {
+    opacity: 1;
+}
+
+/* PRESSURE METER ANIMATION SETUP */
+.pressure-meter {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    background: url('Attachments/homepageimage/PressureMeter12.png') no-repeat center;
+    background-size: contain;
+    animation: meterSwing 3s steps(4) infinite alternate;
+}
+
+@keyframes meterSwing {
+    0% { background-image: url('Attachments/homepageimage/PressureMeter12.png'); }
+    25% { background-image: url('Attachments/homepageimage/PressureMeter10.png'); }
+    50% { background-image: url('Attachments/homepageimage/PressureMeter9.png'); }
+    75% { background-image: url('Attachments/homepageimage/PressureMeter2.png'); }
+    100% { background-image: url('Attachments/homepageimage/PressureMeter12.png'); }
+}
+
+/* BUTTON PANEL STYLES */
+.button-panel {
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
+}
+
+.button-icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* BUTTON ANIMATION SETUP */
+
+/* Kuchipachi Button aka bio page direct */
+#btn-intro {
+    width: 103px;
+    height: 98px;
+    top: 361px;
+    right: 265 px;
+    background-image: url('Attachments/homepageimage/kuchipachi0.png');
+}
+
+#btn-intro:active {
+    animation: introFlicker 1.5s ease-in-out 2 alternate;
+}
+@keyframes introFlicker {
+    0%, 100% { background-image: url('Attachments/homepageimage/kuchipachi0.png'); }
+    50% { background-image: url('Attachments/homepageimage/kuchipachi_pressed.png'); width: 125px; }
+}
+
+/* Laser Cat Button aka laser page direct */
+#btn-laser {
+    width: 98px;
+    height: 166px;
+    top: 482px;
+    right: 338px;
+    background-image: url('Attachments/homepageimage/kittylaser0.png');
+}
+#btn-laser:active {
+    background-image: url('Attachments/homepageimage/kittylaser1.png');
+}
+
+/* Phi Button aka comp page direct */
+#btn-psi {
+    width: 69px;
+    height: 62px;
+    top: 482px;
+    right: 198px;
+    background-image: url('Attachments/homepageimage/phi0.png');
+}
+#btn-psi:active {
+    animation: psiFlicker 0.7s ease-in-out 3 alternate;
+}
+@keyframes psiFlicker {
+    0%, 100% { background-image: url('Attachments/homepageimage/phi0.png'); }
+    50% { background-image: url('Attachments/homepageimage/phi1.png'); }
+}
+
+/* Switch  (Toad Titanic Sequence) aka game project page direct */
+#btn-game {
+    width: 77px;
+    height: 56px;
+    top: 597px;
+    right: 340px;
+    background-image: url('Attachments/homepageimage/gameicon0.png');
+}
+#btn-game:active {
+    animation: gameSequence 1.5s steps(3) forwards;
+}
+@keyframes gameSequence {
+    0% { background-image: url('Attachments/homepageimage/mush1.png'); width: 52px; height: 118px; }
+    33% { background-image: url('Attachments/homepageimage/mush2.png'); width: 91px; height: 119px; }
+    66% { background-image: url('Attachments/homepageimage/mush3.png'); width: 108px; height: 130px; }
+    100% { background-image: url('Attachments/homepageimage/gameicon0.png'); width: 77px; height: 56px; }
+}
+
+/* Book Button aka library page direct */
+#btn-books {
+    width: 78px;
+    height: 87px;
+    top: 597px;
+    right: 198px;
+    background-image: url('Attachments/homepageimage/book0.png');
+}
+#btn-books:active {
+    animation: introFlicker 1.5s ease-in-out 2 alternate url('Attachments/homepageimage/bookicon1.png');
+}
+
+/* Face Meme Button aka exiting tab */
+#btn-meme1 {
+    width: 75px;
+    height: 71px;
+    top: 704px;
+    right: 338px;
+    background-image: url('Attachments/homepageimage/face0.png');
+}
+#btn-meme1:active {
+    animation: meme1Flicker 0.3s ease-in-out 1 forwards;
+}
+@keyframes meme1Flicker {
+    0% { background-image: url('Attachments/homepageimage/face0.png'); }
+    100% { background-image: url('Attachments/homepageimage/face1.png'); width: 87px; height: 61px; }
+}
+
+/* Skeleton Meme Button (Stays Popped Out) */
+#btn-meme2 {
+    width: 100px;
+    height: 121px;
+    top: 704px;
+    right: 198px;
+    background-image: url('Attachments/homepageimage/skeletonicon0.png');
+}
+#btn-meme2:active {
+    background-image: url('Attachments/homepageimage/skeletonicon1.png');
+    width: 113px;
+    height: 122px;
+}
+
+#btn-info {
+    width: 62px;
+    height: 81px;
+    top: 800px;
+    right: 198px;
+    background-image: url('Attachments/homepageimage/question0.png');
+}
+#btn-info:active {
+    background-image: url('Attachments/homepageimage/question1.png');
+    width: 94px;
+    height: 134px;
+}
+
+/* SOCIAL MEDIA ICON SETUP */
+.social-icons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* LinkedIn Icon */
+.social-icons .linkedin {
+    background: url('Attachments/homepageimage/linkedinicon.png') no-repeat center;
+    background-size: contain;
+}
+
+/* GitHub Icon */
+.social-icons .github {
+    background: url('Attachments/homepageimage/githublogo.png') no-repeat center;
+    background-size: contain;
+}
+
+/* FOOTER */
 footer {
     margin-top: 50px;
     padding: 20px;
@@ -86,23 +350,4 @@ footer {
     color: #c9a86a;
     font-size: 14px;
     border-top: 2px solid #c9a86a;
-}
-
-/* ====== GEAR ANIMATION (OPTIONAL) ====== */
-.gear {
-    position: absolute;
-    top: 100px;
-    left: 50px;
-    width: 120px;
-    animation: rotate 12s linear infinite;
-}
-
-.small {
-    width: 60px;
-    animation-duration: 15s;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
