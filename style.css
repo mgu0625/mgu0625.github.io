@@ -36,7 +36,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 0; /* Ensures it's above other elements */
+    z-index: 10; /* Ensures it's above other elements */
 }
 
 /* ELEVATOR DOOR ANIMATION SETUP */
