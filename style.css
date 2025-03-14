@@ -8,34 +8,25 @@
 
 /* GENERAL STYLE SETTUP */
 body {
-    font-family: 'TypewriterMomVibe', serif; /* Default font */
-    color: #c9a86a; /* Brass-gold text */
-    background-color: #3a2113; /* Dark brown background */
-    background-image: url('Attachments/websitebackgroundpattern.jpg');
+    background: #31201f url('Attachments/websitebackgroundpattern.jpg') repeat;
     background-size: 500px 500px;
-    background-repeat: repeat;
-    background-position: center;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw; 
+    margin: 0;
     overflow: hidden;
-    animation: fadeToCenter 5s infinite alternate;
-}
-
-@keyframes fadeToCenter {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 0.5; }
 }
 
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
-    position: fixed; /* Keeps it fixed, even when scrolling */
-    top: 0;
-    left: 0;
-    width: 100vw; 
-    height: 100vh; 
-    background: url('Attachments/homepageimage/bkgd.png') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1; 
+    position: relative;
+    width: 1707px;
+    height: 1228px;
+    background: #31201f url('Attachments/homepageimage/bkgd.png') no-repeat center;
+    background-size: contain; /* Ensures it fits */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Optional shadow for contrast */
 }
 
 /* ELEVATOR DOOR ANIMATION SETUP */
