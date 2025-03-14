@@ -9,7 +9,7 @@
 /* GENERAL STYLE SETTUP */
 body {
     background-color: #31201f; /* Solid color behind everything */
-    background-image: url('Attachments/homepageimage/websitebackgroundpattern.jpg'); 
+    background-image: url('Attachments/websitebackgroundpattern.jpg'); 
     background-size: 500px 500px;
     background-repeat: repeat;
     display: flex;
