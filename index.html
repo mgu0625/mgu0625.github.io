@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A whimsical gothic steampunk playground for science, games, and art.">
-    <title>Graveyard Chemist Little Playground</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A whimsical gothic steampunk playground for science, games, and art."/>
+  <title>Graveyard Chemist Little Playground</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div class="elevator-container">
-        <!-- Flashing Lights Setup --> 
-        <div id="topLeftLamp"></div>
-        <div id="topMiddleLamp"></div>
-        <div id="topRightLamp"></div>
-        <div id="bottomLeftLamp"></div>
-        <div id="bottomRightLamp"></div>
+  <!-- PRESS A BUTTON Label -->
+  <div id="press-button-label">Press a Button</div>
 
-        <!-- Elevator Door Setup -->
-        <div class="elevator-door" id="elevator-door"></div>
-        
-        <!-- Pressure Meter Setup -->
-        <div class="pressure-meter"></div>
+  <div class="elevator-container">
+    <!-- Lamps -->
+    <div id="Edisonlamp_L"></div>
+    <div id="Edisonlamp_M"></div>
+    <div id="Edisonlamp_R"></div>
+    <div id="LBottomLight"></div>
+    <div id="RBottomLight"></div>
 
-        <!-- Button Panel Setup -->
-        <div class="button-panel">
-            <button class="menu-button" id="btn-intro" onclick="pressButton('intro')">
-                <img src="Attachments/homepageimage/kuchipachi0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-laser" onclick="pressButton('laser')">
-                <img src="Attachments/homepageimage/kittylaser0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-psi" onclick="pressButton('psi')">
-                <img src="Attachments/homepageimage/phi0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-game" onclick="pressButton('game')">
-                <img src="Attachments/homepageimage/gameicon0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-books" onclick="pressButton('books')">
-                <img src="Attachments/homepageimage/bookicon0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-meme1" onclick="pressButton('meme1')">
-                <img src="Attachments/homepageimage/face0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-meme2" onclick="pressButton('meme2')">
-                <img src="Attachments/homepageimage/skeletonicon0.png" class="button-icon">
-            </button>
-            <button class="menu-button" id="btn-info" onclick="pressButton('info')">
-                <img src="Attachments/homepageimage/question0.png" class="button-icon">
-            </button>
-        </div>
-    
+    <!-- Elevator Door -->
+    <div class="elevator-door" id="elevator-door"></div>
+
+    <!-- Pressure Meter -->
+    <div class="pressure-meter" id="pressure-meter"></div>
+    <div id="PM_2"></div>
+    <div id="PM_10"></div>
+    <div id="PM_12"></div>
+
+    <!-- Button Panel -->
+    <div class="button-panel">
+      <button class="menu-button" id="btn-intro" onclick="pressButton('intro')">
+        <img src="Attachments/homepageimage/notkuchipachi_0.png" class="button-icon" alt="Intro">
+      </button>
+
+      <button class="menu-button" id="btn-laser" onclick="pressButton('laser')">
+        <img src="Attachments/homepageimage/kittylaser0.png" class="button-icon" alt="Laser Cat">
+      </button>
+
+      <button class="menu-button" id="btn-psi" onclick="pressButton('psi')">
+        <img src="Attachments/homepageimage/phi_0.png" class="button-icon" alt="Psi Button">
+      </button>
+
+      <button class="menu-button" id="btn-game" onclick="pressButton('game')">
+        <img src="Attachments/homepageimage/gameicon0.png" class="button-icon" alt="Game">
+      </button>
+
+      <button class="menu-button" id="btn-books" onclick="pressButton('books')">
+        <img src="Attachments/homepageimage/book0.png" class="button-icon" alt="Books">
+      </button>
+
+      <button class="menu-button" id="btn-meme1" onclick="pressButton('meme1')">
+        <img src="Attachments/homepageimage/face_0.png" class="button-icon" alt="Meme 1">
+      </button>
+
+      <button class="menu-button" id="btn-meme2" onclick="pressButton('meme2')">
+        <img src="Attachments/homepageimage/coolskeleton_0.png" class="button-icon" alt="Meme 2">
+      </button>
+
+      <button class="menu-button" id="btn-info" onclick="pressButton('info')">
+        <img src="Attachments/homepageimage/question_0.png" class="button-icon" alt="Info">
+      </button>
     </div>
 
-    <footer>
-        <p>© 2025 MGUtashiro | Hosted on GitHub Pages</p>
-    </footer>
+    <!-- Additional Animated Elements (for transitions / alt frames) -->
+    <div id="notkuchipachi_1"></div>
+    <div id="kittylaser_1"></div>
+    <div id="phi_1"></div>
+    <div id="game_0"></div>
+    <div id="mush_1"></div>
+    <div id="mush_2"></div>
+    <div id="mush_3"></div>
+    <div id="book1"></div>
+    <div id="face_1"></div>
+    <div id="coolskeleton_1"></div>
+    <div id="question_1"></div>
+  </div>
 
-    <script src="script.js"></script>
+  <footer>
+    <p>© 2025 MGUtashiro | Hosted on GitHub Pages</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

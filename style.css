@@ -334,13 +334,13 @@ body {
 
 /* LinkedIn Icon */
 .social-icons .linkedin {
-    background: url('Attachments/homepageimage/linkedinicon.png') no-repeat center;
+    background: url('Attachments/linkedinicon.png') no-repeat center;
     background-size: contain;
 }
 
 /* GitHub Icon */
 .social-icons .github {
-    background: url('Attachments/homepageimage/githublogo.png') no-repeat center;
+    background: url('Attachments/githublogo.png') no-repeat center;
     background-size: contain;
 }
 
