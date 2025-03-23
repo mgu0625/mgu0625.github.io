@@ -191,6 +191,18 @@ body {
     background-repeat: no-repeat;
 }
 
+.press-button-text {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-family: 'TypewriterMomVibe', monospace;
+    color: #c9a86a;
+    font-size: 36px;
+    z-index: 9999;
+}
+
+
 /* BUTTON ANIMATION SETUP */
 
 /* Kuchipachi Button aka bio page direct */
