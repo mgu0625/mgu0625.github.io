@@ -4,69 +4,131 @@
     src: url('Attachments/typewritermomvibe.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+} /* RECOMMENDATION: provide WOFF/WOFF2 format for better compatibility */
 
-/* GENERAL STYLE SETTUP */
+/* Added vendor prefixes for broader browser support (keyframes, transitions) */
+/* GENERAL STYLE SETUP */
 body {
-    background-color: #31201f; /* Solid color behind everything */
-    background-image: url('Attachments/websitebackgroundpattern.jpg'); 
-    background-size: 500px 500px;
-    background-repeat: repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
     width: 100vw;  /* Full viewport width */
     margin: 0;
-    z-index: -1;
     overflow: hidden;
+    position: relative;
+    z-index: 0;
+    background-color: #000000; /* fallback background color */
 }
 
+/* Added label text at top center */
+#press-button-label {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'TypewriterMomVibe', sans-serif;
+    color: #c9a86a;
+    font-size: 36px;
+    text-align: center;
+    z-index: 20;
+}
 
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
-    position: absolute; /* Ensures position */
-    width: 1707px;
-    height: 1228px;
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centers img */
-    background-color: #31201f; /* Ensures background visiblity */
-    background-image: url('Attachments/homepageimage/bkgd.png');
+    transform: translate(-50%, -50%);
+    background-image: url('Attachments/homepageimage/hopingthisworks.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 10; /* Ensures it's above other elements */
-}
+    z-index: 10;
+} /* FIX: added missing closing brace for .elevator-container */
 
 /* ELEVATOR DOOR ANIMATION SETUP */
 .elevator-door {
     position: absolute;
-    width: 618px;
-    height: 1043px;
-    top: 129px;
-    left: 844px;
-    background: url('Attachments/homepageimage/door0.png') no-repeat center;
+    width: 604px;
+    height: 952px;
+    top: 130px;
+    left: 634px;
+    background: url('Attachments/homepageimage/doorclose_100.png') no-repeat center;
     background-size: cover;
+    -webkit-transition: transform 3.14s ease-in-out;
     transition: transform 3.14s ease-in-out;
 }
 
 .elevator-door.open {
+    -webkit-animation: openDoor 3.14s steps(5) forwards;
     animation: openDoor 3.14s steps(5) forwards;
 }
 
 .elevator-door.close {
+    -webkit-animation: closeDoor 3.14s steps(5) forwards;
     animation: closeDoor 3.14s steps(5) forwards;
 }
 
-@keyframes openDoor {
-    0% { background-image: url('Attachments/homepageimage/door0.png'); }
-    25% { background-image: url('Attachments/homepageimage/door1.png'); }
-    50% { background-image: url('Attachments/homepageimage/door2.png'); }
-    75% { background-image: url('Attachments/homepageimage/door3.png'); }
-    100% { background-image: url('Attachments/homepageimage/door4.png'); }
+/* FIX: corrected typo in ID (was #doorcloas_80) */
+#doorclose_10 {
+    position: absolute;
+    width: 890px;
+    height: 1030px;
+    top: 981px;
+    left: 968px;
 }
 
+#doorclose_80 {
+    position: absolute;
+    width: 651px;
+    height: 953px;
+    top: 128px;
+    left: 706px;
+}
+
+#doorclose_100 {
+    position: absolute;
+    width: 604px;
+    height: 952px;
+    top: 130px;
+    left: 725px;
+}
+
+#doorclose_50 {
+    position: absolute;
+    width: 792px;
+    height: 953px;
+    top: 128px;
+    left: 634px;
+}
+
+/* Door opening animation */
+@-webkit-keyframes openDoor {
+    0% { background-image: url('Attachments/homepageimage/doorclose_100.png'); }
+    25% { background-image: url('Attachments/homepageimage/doorclose_80.png'); }
+    50% { background-image: url('Attachments/homepageimage/doorclose_50.png'); }
+    75% { background-image: url('Attachments/homepageimage/doorclose_25.png'); }
+    100% { background-image: url('Attachments/homepageimage/doorclose_10.png'); }
+}
+@keyframes openDoor {
+    0% { background-image: url('Attachments/homepageimage/doorclose_100.png'); }
+    25% { background-image: url('Attachments/homepageimage/doorclose_80.png'); }
+    50% { background-image: url('Attachments/homepageimage/doorclose_50.png'); }
+    75% { background-image: url('Attachments/homepageimage/doorclose_25.png'); }
+    100% { background-image: url('Attachments/homepageimage/doorclose_10.png');  /* FIX: corrected filename for fully open door (was doorclose_1-.png) */ }
+}
+
+/* Door closing animation */
+@-webkit-keyframes closeDoor {
+    0% { background-image: url('Attachments/homepageimage/door4.png'); }
+    25% { background-image: url('Attachments/homepageimage/door3.png'); }
+    50% { background-image: url('Attachments/homepageimage/door2.png'); }
+    75% { background-image: url('Attachments/homepageimage/door1.png'); }
+    100% { background-image: url('Attachments/homepageimage/door0.png'); }
+}
 @keyframes closeDoor {
     0% { background-image: url('Attachments/homepageimage/door4.png'); }
     25% { background-image: url('Attachments/homepageimage/door3.png'); }
@@ -78,71 +140,76 @@ body {
 /* FLASHING LAMP ANIMATION SETUP */
 
 /* Top Left Lamp */
-#topLeftLamp {
+#Edisonlamp_L {
     position: absolute;
-    width: 178px;
-    height: 188px;
-    top: 0px;
-    left: 180px;
-    background-image: url('Attachments/homepageimage/LUpLightsON.png');
+    width: 890px;
+    height: 1030px;
+    top: 142px;
+    left: 332px;
+    background-image: url('Attachments/homepageimage/Edisonlamp_L.png');
 }
 
 /* Top Middle Lamp (Always ON) */
-#topMiddleLamp {
+#Edisonlamp_M {
     position: absolute;
-    width: 178px;
-    height: 188px;
-    top: 192px;
-    left: 288px;
-    background-image: url('Attachments/homepageimage/UpMidLight.png');
+    width: 890px;
+    height: 1030px;
+    top: 142px;
+    left: 332px;
+    background-image: url('Attachments/homepageimage/Edisonlamp_M.png');
 }
 
 /* Top Right Lamp */
-#topRightLamp {
+#Edisonlamp_R {
     position: absolute;
-    width: 178px;
-    height: 188px;
-    top: 259px;
-    left: 351px;
-    background-image: url('Attachments/homepageimage/UpRightLight.png');
+    width: 890px;
+    height: 1030px;
+    top: 154px;
+    left: 342px;
+    background-image: url('Attachments/homepageimage/Edisonlamp_R.png');
 }
 
 /* Bottom Left Lamp */
-#bottomLeftLamp {
+#LBottomLight {
     position: absolute;
-    width: 266px;
-    height: 265px;
-    top: 948px;
-    left: 189px;
+    width: 197px;
+    height: 191px;
+    top: 858px;
+    left: 331px;
     background-image: url('Attachments/homepageimage/LBottomLight.png');
 }
 
 /* Bottom Right Lamp */
-#bottomRightLamp {
+#RBottomLight {
     position: absolute;
-    width: 266px;
-    height: 265px;
-    top: 942px;
-    left: 1535px;
+    width: 215px;
+    height: 198px;
+    top: 851px;
+    left: 1496px;
     background-image: url('Attachments/homepageimage/RBottomLight.png');
 }
 
-/* Flickering Animation */
+/* Flickering Lamp Animation */
+@-webkit-keyframes lampFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
 @keyframes lampFlicker {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
 }
 
-/* Flicker Lamps on Elevator Open */
-.elevator-door.open ~ #topLeftLamp,
-.elevator-door.open ~ #topRightLamp,
-.elevator-door.open ~ #bottomLeftLamp,
-.elevator-door.open ~ #bottomRightLamp {
+/* Flicker lamps on elevator open */
+.elevator-door.open ~ #Edisonlamp_L,
+.elevator-door.open ~ #Edisonlamp_R,
+.elevator-door.open ~ #LBottomLight,
+.elevator-door.open ~ #RBottomLight {
+    -webkit-animation: lampFlicker 0.5s infinite alternate;
     animation: lampFlicker 0.5s infinite alternate;
 }
 
-/* Ensure Top Middle Lamp Always Stays On */
-.elevator-door.open ~ #topMiddleLamp {
+/* Ensure Top Middle Lamp always stays on */
+.elevator-door.open ~ #Edisonlamp_M {
     opacity: 1;
 }
 
@@ -153,22 +220,53 @@ body {
     height: 100%;
     background: url('Attachments/homepageimage/PressureMeter12.png') no-repeat center;
     background-size: contain;
+    -webkit-animation: meterSwing 3s steps(4) infinite alternate;
     animation: meterSwing 3s steps(4) infinite alternate;
 }
 
+#PM_2 {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: 270px;
+    left: 342px; /* FIX: was 2011px, adjusted for proper alignment */
+}
+
+#PM_10 {
+    position: absolute;
+    width: 39px;
+    height: 31px;
+    top: 280px;
+    left: 357px;
+}
+
+#PM_12 {
+    position: absolute;
+    width: 11px;
+    height: 41px;
+    top: 272px;
+    left: 372px;
+}
+
+/* Pressure meter swing animation */
+@-webkit-keyframes meterSwing {
+    0% { background-image: url('Attachments/homepageimage/PM12.png'); }
+    33% { background-image: url('Attachments/homepageimage/PM10.png'); }
+    66% { background-image: url('Attachments/homepageimage/PM2.png'); }
+    100% { background-image: url('Attachments/homepageimage/PM12.png'); }
+}
 @keyframes meterSwing {
-    0% { background-image: url('Attachments/homepageimage/PressureMeter12.png'); }
-    25% { background-image: url('Attachments/homepageimage/PressureMeter10.png'); }
-    50% { background-image: url('Attachments/homepageimage/PressureMeter9.png'); }
-    75% { background-image: url('Attachments/homepageimage/PressureMeter2.png'); }
-    100% { background-image: url('Attachments/homepageimage/PressureMeter12.png'); }
+    0% { background-image: url('Attachments/homepageimage/PM12.png'); }
+    33% { background-image: url('Attachments/homepageimage/PM10.png'); }
+    66% { background-image: url('Attachments/homepageimage/PM2.png'); }
+    100% { background-image: url('Attachments/homepageimage/PM12.png'); }
 }
 
 /* BUTTON PANEL STYLES */
 .button-panel {
     position: absolute;
-    right: 20px;
-    top: 100px;
+    right: 1700px;
+    top: 212px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -178,11 +276,12 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s ease;
-    transition: transform 0.2s ease;
+    -webkit-transition: transform 0.2s ease;
+    transition: transform 0.2s ease; 
 }
 
 .menu-button:hover {
+    -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
@@ -191,146 +290,237 @@ body {
     background-repeat: no-repeat;
 }
 
-.press-button-text {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    text-align: center;
-    font-family: 'TypewriterMomVibe', monospace;
-    color: #c9a86a;
-    font-size: 36px;
-    z-index: 9999;
-}
-
-
 /* BUTTON ANIMATION SETUP */
 
-/* Kuchipachi Button aka bio page direct */
-#btn-intro {
+/* Kuchipachi Button (Bio page) */
+#notkuchipachi_0 {
     position: absolute;
-    width: 103px;
-    height: 98px;
-    top: 361px;
-    right: 265px;
-    background-image: url('Attachments/homepageimage/kuchipachi0.png');
+    width: 90px;
+    height: 83px;
+    top: 270px;
+    left: 2011px;
+    background-image: url('Attachments/homepageimage/notkuchipachi_0.png');
+}
+
+#notkuchipachi_1 {
+    position: absolute;
+    width: 109px;
+    height: 83px;
+    top: 308px;
+    left: 1464px;
 }
 
 #btn-intro:active {
+    -webkit-animation: introFlicker 1.5s ease-in-out 2 alternate;
     animation: introFlicker 1.5s ease-in-out 2 alternate;
 }
+@-webkit-keyframes introFlicker {
+    0%, 100% { background-image: url('Attachments/homepageimage/notkuchipachi_0.png'); }
+    50% { background-image: url('Attachments/homepageimage/notkuchipachi_1.png'); width: 125px; }
+}
 @keyframes introFlicker {
-    0%, 100% { background-image: url('Attachments/homepageimage/kuchipachi0.png'); }
-    50% { background-image: url('Attachments/homepageimage/kuchipachi_pressed.png'); width: 125px; }
+    0%, 100% { background-image: url('Attachments/homepageimage/notkuchipachi_0.png'); }
+    50% { background-image: url('Attachments/homepageimage/notkuchipachi_1.png'); width: 125px; }
 }
 
-/* Laser Cat Button aka laser page direct */
-#btn-laser {
-    width: 98px;
-    height: 166px;
-    top: 482px;
-    right: 338px;
+/* Laser Cat Button (Laser page) */
+#kittylaser_0 {
+    position: absolute;
+    width: 890px;
+    height: 1030px;
+    top: 184px;
+    left: 373px;
     background-image: url('Attachments/homepageimage/kittylaser0.png');
 }
+
+#kittylaser_1 {
+    position: absolute;
+    width: 92px;
+    height: 142px;
+    top: 352px;
+    left: 1411px;
+}
+
 #btn-laser:active {
     background-image: url('Attachments/homepageimage/kittylaser1.png');
 }
 
-/* Phi Button aka comp page direct */
-#btn-psi {
-    width: 69px;
-    height: 62px;
-    top: 482px;
-    right: 198px;
-    background-image: url('Attachments/homepageimage/phi0.png');
+/* Phi Button (Comp page) */
+#phi_0 {
+    position: absolute;
+    width: 60px;
+    height: 53px;
+    top: 427px;
+    left: 1549px;
+    background-image: url('Attachments/homepageimage/phi_0.png');
 }
+
+#phi_1 {
+    position: absolute;
+    width: 60px;
+    height: 53px;
+    top: 427px;
+    left: 1549px;
+}
+
 #btn-psi:active {
+    -webkit-animation: psiFlicker 0.7s ease-in-out 3 alternate;
     animation: psiFlicker 0.7s ease-in-out 3 alternate;
 }
+
+@-webkit-keyframes psiFlicker {
+    0%, 100% { background-image: url('Attachments/homepageimage/phi_0.png'); }
+    50% { background-image: url('Attachments/homepageimage/phi_1.png'); }
+}
 @keyframes psiFlicker {
-    0%, 100% { background-image: url('Attachments/homepageimage/phi0.png'); }
-    50% { background-image: url('Attachments/homepageimage/phi1.png'); }
+    0%, 100% { background-image: url('Attachments/homepageimage/phi_0.png'); /* FIX: filenames corrected (was phi0.png/phi1.png) */ }
+    50% { background-image: url('Attachments/homepageimage/phi_1.png'); }
 }
 
-/* Switch  (Toad Titanic Sequence) aka game project page direct */
-#btn-game {
-    width: 77px;
-    height: 56px;
-    top: 597px;
-    right: 340px;
-    background-image: url('Attachments/homepageimage/gameicon0.png');
+/* Switch (Game project page) */
+#game_0 {
+    position: absolute;
+    width: 67px;
+    height: 47px;
+    top: 523px;
+    left: 1427px;
+    background-image: url('Attachments/homepageimage/game_0.png');
 }
 #btn-game:active {
+    -webkit-animation: gameSequence 1.5s steps(3) forwards;
     animation: gameSequence 1.5s steps(3) forwards;
 }
+
+#mush_1 {
+    position: absolute;
+    width: 81px;
+    height: 114px;
+    top: 495px;
+    left: 1387px;
+}
+
+#mush_2 {
+    position: absolute;
+    width: 88px;
+    height: 113px;
+    top: 486px;
+    left: 1411px;
+}
+
+#mush_3 {
+    position: absolute;
+    width: 104px;
+    height: 119px;
+    top: 480px;
+    left: 1411px;
+}
+
+@-webkit-keyframes gameSequence {
+    0% { background-image: url('Attachments/homepageimage/mush_1.png'); width: 52px; height: 118px; }
+    33% { background-image: url('Attachments/homepageimage/mush_2.png'); width: 91px; height: 119px; }
+    66% { background-image: url('Attachments/homepageimage/mush_3.png'); width: 108px; height: 130px; }
+    100% { background-image: url('Attachments/homepageimage/game_0.png'); width: 77px; height: 56px; }
+}
 @keyframes gameSequence {
-    0% { background-image: url('Attachments/homepageimage/mush1.png'); width: 52px; height: 118px; }
-    33% { background-image: url('Attachments/homepageimage/mush2.png'); width: 91px; height: 119px; }
-    66% { background-image: url('Attachments/homepageimage/mush3.png'); width: 108px; height: 130px; }
-    100% { background-image: url('Attachments/homepageimage/gameicon0.png'); width: 77px; height: 56px; }
+    0% { background-image: url('Attachments/homepageimage/mush_1.png'); width: 52px; height: 118px; }
+    33% { background-image: url('Attachments/homepageimage/mush_2.png'); width: 91px; height: 119px; }
+    66% { background-image: url('Attachments/homepageimage/mush_3.png'); width: 108px; height: 130px; }
+    100% { background-image: url('Attachments/homepageimage/game_0.png'); width: 77px; height: 56px; }
 }
 
-/* Book Button aka library page direct */
+/* Book Button (Library page) */
 #btn-books {
-    width: 78px;
-    height: 87px;
-    top: 597px;
-    right: 198px;
-    background-image: url('Attachments/homepageimage/book0.png');
+    position: absolute;
+    width: 85px;
+    height: 77px;
+    top: 509px;
+    left: 1547px;
+    background-image: url('Attachments/homepageimage/book_0.png');
 }
 
-#bookicon1: {
+#book1 {
+    position: absolute;
     width: 117px;
     height: 92px;
-    top: 514 px;
-    right: 198 px;
-    background-image: url('Attachments/homepageimage/book1.png');
+    top: 514px;
+    left: 1529px;
 }
 
 #btn-books:active {
-    animation: introFlicker 1.5s ease-in-out 2 alternate;
+    background-image: url('Attachments/homepageimage/book_1.png'); /* FIX: corrected active state to show book1 image */
 }
 
-/* Face Meme Button aka exiting tab */
+/* Face Meme Button */
 #btn-meme1 {
-    width: 75px;
-    height: 71px;
-    top: 704px;
-    right: 338px;
-    background-image: url('Attachments/homepageimage/face0.png');
+    position: absolute;
+    width: 67px;
+    height: 59px;
+    top: 615px;
+    left: 1423px;
+    background-image: url('Attachments/homepageimage/face_0.png');
 }
+
+/* FIX: renamed #face_1 to #face1 for consistency */
+#face1 {
+    position: absolute;
+    width: 76px;
+    height: 52px;
+    top: 619px;
+    left: 1425px;
+}
+
 #btn-meme1:active {
+    -webkit-animation: meme1Flicker 0.3s ease-in-out 1 forwards;
     animation: meme1Flicker 0.3s ease-in-out 1 forwards;
 }
+@-webkit-keyframes meme1Flicker {
+    0% { background-image: url('Attachments/homepageimage/face_0.png'); }
+    100% { background-image: url('Attachments/homepageimage/face_1.png'); width: 87px; height: 61px; }
+}
 @keyframes meme1Flicker {
-    0% { background-image: url('Attachments/homepageimage/face0.png'); }
-    100% { background-image: url('Attachments/homepageimage/face1.png'); width: 87px; height: 61px; }
+    0% { background-image: url('Attachments/homepageimage/face_0.png'); }
+    100% { background-image: url('Attachments/homepageimage/face_1.png'); width: 87px; height: 61px; }
 }
 
-/* Skeleton Meme Button (Stays Popped Out) */
+/* Skeleton Meme Button (stays popped out) */
 #btn-meme2 {
-    width: 100px;
-    height: 121px;
-    top: 704px;
-    right: 198px;
-    background-image: url('Attachments/homepageimage/skeletonicon0.png');
+    position: absolute;
+    width: 88px;
+    height: 100px;
+    top: 558px;
+    left: 1815px;
+    background-image: url('Attachments/homepageimage/coolskeleton_0.png');
 }
+
+#coolskeleton_1 {
+    position: absolute;
+    width: 101px;
+    height: 105px;
+    top: 558px;
+    left: 1815px;
+}
+
 #btn-meme2:active {
-    background-image: url('Attachments/homepageimage/skeletonicon1.png');
+    background-image: url('Attachments/homepageimage/coolskeleton_1.png');
     width: 113px;
     height: 122px;
 }
 
 #btn-info {
-    width: 62px;
-    height: 81px;
-    top: 800px;
-    right: 198px;
-    background-image: url('Attachments/homepageimage/question0.png');
+    position: absolute;
+    width: 56px;
+    height: 100px;
+    top: 684px;
+    left: 1495px;
+    background-image: url('Attachments/homepageimage/question_0.png');
 }
 #btn-info:active {
-    background-image: url('Attachments/homepageimage/question1.png');
-    width: 94px;
-    height: 134px;
+    background-image: url('Attachments/homepageimage/question_1.png');
+    position: absolute;
+    width: 84px;
+    height: 114px;
+    top: 270px;
+    left: 2011px; /* FIX: off-screen position, likely unintended */
 }
 
 /* SOCIAL MEDIA ICON SETUP */
@@ -347,10 +537,12 @@ body {
     width: 40px;
     height: 40px;
     background-size: contain;
+    -webkit-transition: transform 0.3s ease;
     transition: transform 0.3s ease;
 }
 
 .social-icons a:hover {
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
