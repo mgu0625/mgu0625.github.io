@@ -47,7 +47,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     z-index: 10;
-} /* FIX: added missing closing brace for .elevator-container */
+} 
 
 /* ELEVATOR DOOR ANIMATION SETUP */
 .elevator-door {
@@ -118,7 +118,7 @@ body {
     25% { background-image: url('Attachments/homepageimage/doorclose_80.png'); }
     50% { background-image: url('Attachments/homepageimage/doorclose_50.png'); }
     75% { background-image: url('Attachments/homepageimage/doorclose_25.png'); }
-    100% { background-image: url('Attachments/homepageimage/doorclose_10.png');  /* FIX: corrected filename for fully open door (was doorclose_1-.png) */ }
+    100% { background-image: url('Attachments/homepageimage/doorclose_10.png');  }
 }
 
 /* Door closing animation */
@@ -229,7 +229,7 @@ body {
     width: 34px;
     height: 34px;
     top: 270px;
-    left: 342px; /* FIX: was 2011px, adjusted for proper alignment */
+    left: 342px; 
 }
 
 #PM_10 {
@@ -250,16 +250,16 @@ body {
 
 /* Pressure meter swing animation */
 @-webkit-keyframes meterSwing {
-    0% { background-image: url('Attachments/homepageimage/PM12.png'); }
-    33% { background-image: url('Attachments/homepageimage/PM10.png'); }
-    66% { background-image: url('Attachments/homepageimage/PM2.png'); }
-    100% { background-image: url('Attachments/homepageimage/PM12.png'); }
+    0% { background-image: url('Attachments/homepageimage/PM_12.png'); }
+    33% { background-image: url('Attachments/homepageimage/PM_10.png'); }
+    66% { background-image: url('Attachments/homepageimage/PM_2.png'); }
+    100% { background-image: url('Attachments/homepageimage/PM_12.png'); }
 }
 @keyframes meterSwing {
-    0% { background-image: url('Attachments/homepageimage/PM12.png'); }
-    33% { background-image: url('Attachments/homepageimage/PM10.png'); }
-    66% { background-image: url('Attachments/homepageimage/PM2.png'); }
-    100% { background-image: url('Attachments/homepageimage/PM12.png'); }
+    0% { background-image: url('Attachments/homepageimage/PM_12.png'); }
+    33% { background-image: url('Attachments/homepageimage/PM_10.png'); }
+    66% { background-image: url('Attachments/homepageimage/PM_2.png'); }
+    100% { background-image: url('Attachments/homepageimage/PM_12.png'); }
 }
 
 /* BUTTON PANEL STYLES */
@@ -330,7 +330,7 @@ body {
     height: 1030px;
     top: 184px;
     left: 373px;
-    background-image: url('Attachments/homepageimage/kittylaser0.png');
+    background-image: url('Attachments/homepageimage/kittylaser_0.png');
 }
 
 #kittylaser_1 {
@@ -342,7 +342,7 @@ body {
 }
 
 #btn-laser:active {
-    background-image: url('Attachments/homepageimage/kittylaser1.png');
+    background-image: url('Attachments/homepageimage/kittylaser_1.png');
 }
 
 /* Phi Button (Comp page) */
