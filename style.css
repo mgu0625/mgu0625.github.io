@@ -37,25 +37,24 @@ body {
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
     position: absolute;
-    width: 1920px;
-    height: 1080px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
     background-image: url('Attachments/homepageimage/hopingthisworks.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 10;
-} 
+}
 
 /* ELEVATOR DOOR ANIMATION SETUP */
 .elevator-door {
     position: absolute;
-    width: 604px;
-    height: 952px;
-    top: 130px;
-    left: 634px;
+    width: 311px;
+    height: 550px;
+    top: 45px;
+    left: 373px;
     background: url('Attachments/homepageimage/doorclose_100.png') no-repeat center;
     background-size: cover;
     -webkit-transition: transform 3.14s ease-in-out;
