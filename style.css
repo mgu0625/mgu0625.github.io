@@ -28,14 +28,14 @@ body {
     transform: translateX(-50%);
     font-family: 'TypewriterMomVibe', sans-serif;
     color: #c9a86a;
-    font-size: 36px;
+    font-size: 33px;
     text-align: center;
-    z-index: 20;
+    z-index: 30;
 }
 
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
-    position: absolute;
+    position: relative;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -206,8 +206,8 @@ body {
 /* PRESSURE METER ANIMATION SETUP */
 .pressure-meter {
     position: absolute;
-    top: 284px;
-    left: 368px;
+    top: 244px;
+    left: 348px;
     width: 40px;
     height: 40px;
     background-image: url('Attachments/homepageimage/PM_12.png');
