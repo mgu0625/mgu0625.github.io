@@ -4,16 +4,15 @@
     src: url('Attachments/typewritermomvibe.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-} /* RECOMMENDATION: provide WOFF/WOFF2 format for better compatibility */
+} 
 
-/* Added vendor prefixes for broader browser support (keyframes, transitions) */
 /* GENERAL STYLE SETUP */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    width: 100vw;  /* Full viewport width */
+    height: 100vh; 
+    width: 100vw;  
     margin: 0;
     overflow: hidden;
     position: relative;
@@ -46,6 +45,20 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     z-index: 10;
+}
+
+.elevator-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 334;
+    height: 523;
+    background-image: url('Attachments/homepageimage/ElevatorBackground.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 11; /* higher than elevator-door (z-index: 10) */
+    pointer-events: none; /* make it non-clickable so buttons/door still work */
 }
 
 /* ELEVATOR DOOR ANIMATION SETUP */
