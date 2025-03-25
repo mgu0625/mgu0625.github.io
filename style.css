@@ -44,7 +44,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 10;
+    z-index: 0;
 }
 
 .elevator-frame {
@@ -66,7 +66,7 @@ body {
     position: absolute;
     width: 311px;
     height: 550px;
-    top: 45px;
+    top: 44px;
     left: 373px;
     background: url('Attachments/homepageimage/doorclose_100.png') no-repeat center;
     background-size: cover;
@@ -84,38 +84,6 @@ body {
     animation: closeDoor 3.14s steps(5) forwards;
 }
 
-/* FIX: corrected typo in ID (was #doorcloas_80) */
-#doorclose_10 {
-    position: absolute;
-    width: 890px;
-    height: 1030px;
-    top: 981px;
-    left: 968px;
-}
-
-#doorclose_80 {
-    position: absolute;
-    width: 651px;
-    height: 953px;
-    top: 128px;
-    left: 706px;
-}
-
-#doorclose_100 {
-    position: absolute;
-    width: 604px;
-    height: 952px;
-    top: 130px;
-    left: 725px;
-}
-
-#doorclose_50 {
-    position: absolute;
-    width: 792px;
-    height: 953px;
-    top: 128px;
-    left: 634px;
-}
 
 /* Door opening animation */
 @-webkit-keyframes openDoor {
@@ -156,8 +124,8 @@ body {
     position: absolute;
     width: 890px;
     height: 1030px;
-    top: 142px;
-    left: 332px;
+    top: 84px;
+    left: 416px;
     background-image: url('Attachments/homepageimage/Edisonlamp_L.png');
 }
 
@@ -166,8 +134,9 @@ body {
     position: absolute;
     width: 890px;
     height: 1030px;
-    top: 142px;
-    left: 332px;
+    top: 244px;
+    left: 499px;
+    z-index: 20;
     background-image: url('Attachments/homepageimage/Edisonlamp_M.png');
 }
 
@@ -176,9 +145,10 @@ body {
     position: absolute;
     width: 890px;
     height: 1030px;
-    top: 154px;
-    left: 342px;
+    top: 276px;
+    left: 548px;
     background-image: url('Attachments/homepageimage/Edisonlamp_R.png');
+    z-index: 20;
 }
 
 /* Bottom Left Lamp */
@@ -186,8 +156,9 @@ body {
     position: absolute;
     width: 197px;
     height: 191px;
-    top: 858px;
-    left: 331px;
+    top: 834px;
+    left: 419px;
+    z-index: 20;
     background-image: url('Attachments/homepageimage/LBottomLight.png');
 }
 
@@ -198,6 +169,7 @@ body {
     height: 198px;
     top: 851px;
     left: 1496px;
+    z-index: 20;
     background-image: url('Attachments/homepageimage/RBottomLight.png');
 }
 
@@ -228,37 +200,17 @@ body {
 /* PRESSURE METER ANIMATION SETUP */
 .pressure-meter {
     position: absolute;
-    width: 100%; 
-    height: 100%;
-    background: url('Attachments/homepageimage/PM12.png') no-repeat center;
+    top: 284px;
+    left: 368px;
+    width: 40px;
+    height: 40px;
+    background-image: url('Attachments/homepageimage/PM_12.png');
     background-size: contain;
-    -webkit-animation: meterSwing 3s steps(4) infinite alternate;
-    animation: meterSwing 3s steps(4) infinite alternate;
+    background-repeat: no-repeat;
+    animation: meterSwing 2.5s steps(4) infinite;
+    z-index: 20;
 }
 
-#PM_2 {
-    position: absolute;
-    width: 34px;
-    height: 34px;
-    top: 270px;
-    left: 342px; 
-}
-
-#PM_10 {
-    position: absolute;
-    width: 39px;
-    height: 31px;
-    top: 280px;
-    left: 357px;
-}
-
-#PM_12 {
-    position: absolute;
-    width: 11px;
-    height: 41px;
-    top: 272px;
-    left: 372px;
-}
 
 /* Pressure meter swing animation */
 @-webkit-keyframes meterSwing {
