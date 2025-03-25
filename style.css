@@ -41,7 +41,7 @@ body {
     top: 0;
     left: 0;
     background-image: url('Attachments/homepageimage/hopingthisworks.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 0;
