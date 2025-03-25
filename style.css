@@ -36,15 +36,15 @@ body {
 /* ELEVATOR CONTAINER SETUP */
 .elevator-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    width: 1920px;
+    height: 1080px;
     background-image: url('Attachments/homepageimage/hopingthisworks.png');
-    background-size: cover;
+    background-size: 100% 100%; /* Ensures full coverage */
     background-repeat: no-repeat;
-    background-position: center;
-    z-index: 0;
+    background-position: center center;
+    transform: scale(calc(100vw / 1920));
+    transform-origin: top left;
+    z-index: 10;
 }
 
 .elevator-frame {
