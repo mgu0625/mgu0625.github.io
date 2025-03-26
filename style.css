@@ -10,28 +10,7 @@
     width: 207px;
     height: 329px;
     right: 10%;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="207" height="329" fill="none"><path stroke="%23000" stroke-width=".5" d="M8 42.873v35.453m61.435-20.039V29M31.356 58.287v243.547m-.424-.243 74.193.248m16.958-.005 70.917.226m-.231-.226V58.287m.231.232H8m152.394-.232V29m-90.727 0h90.958m-55.346 269.751v6.166m3.083-9.248V308m3.084-9.249v6.166m3.083-9.248V308m4.625-9.249v6.166m3.083-9.248V308"/><path fill="%23704F43" stroke="%23000" stroke-width=".3" d="M97.15 21.15h29.7v13.7h-29.7z"/><path fill="%23835B4D" stroke="%23000" stroke-width=".25" d="M97.222 54.875h-.137l-5.9-14.75h41.63l-5.9 14.75H97.222Zm.125.25h29.306v11.75H97.347v-11.75Z"/><rect width="144" height="214" x="40" y="72" fill="%23121212" rx="6"/><circle cx="112.062" cy="94.229" r="17.729" fill="url(%23a)" transform="rotate(145.702 112.062 94.23)"/><circle cx="147.521" cy="179.021" r="17.729" fill="url(%23b)" transform="rotate(-139.008 147.521 179.021)"/><circle cx="76.604" cy="179.021" r="17.729" fill="url(%23c)" transform="rotate(-170.869 76.604 179.021)"/><circle cx="148.262" cy="221.387" r="17.729" fill="url(%23d)" transform="rotate(28.203 148.262 221.387)"/><circle cx="75.803" cy="221.387" r="17.729" fill="url(%23e)" transform="rotate(145.702 75.803 221.387)"/><circle cx="112.803" cy="263.012" r="17.729" fill="url(%23f)" transform="rotate(30.099 112.803 263.012)"/><circle cx="76.604" cy="135.854" r="17.729" fill="url(%23g)" transform="rotate(145.702 76.604 135.854)"/><circle cx="147.521" cy="135.854" r="17.729" fill="url(%23h)" transform="rotate(-146.077 147.521 135.854)"/><defs><linearGradient id="a" x1="112.062" x2="112.062" y1="76.5" y2="111.958" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="b" x1="147.521" x2="147.521" y1="161.292" y2="196.75" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="c" x1="76.604" x2="76.604" y1="161.292" y2="196.75" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="d" x1="148.262" x2="148.262" y1="203.658" y2="239.116" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="e" x1="75.803" x2="75.803" y1="203.658" y2="239.116" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="f" x1="112.803" x2="112.803" y1="245.283" y2="280.741" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="g" x1="76.604" x2="76.604" y1="118.125" y2="153.583" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient><linearGradient id="h" x1="147.521" x2="147.521" y1="118.125" y2="153.583" gradientUnits="userSpaceOnUse"><stop stop-color="%23E8AA01"/><stop offset=".745" stop-color="%23825F01"/><stop offset="1" stop-color="%235C4302"/></linearGradient></defs></svg>')
+    background-image: url('/websitesvgs/navigationmenu.svg')
     z-index: 100;
-}
-
-.navbar_container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.navbar_menu {
-    list-style: none;
-    margin: 0;
-    position: absolute;
-    top: 72px;
-    left: 40px;
-    width: 144px;
-    height: 214px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    pointer-events: auto;
 }
 
