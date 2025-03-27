@@ -6,27 +6,27 @@
     font-style: normal;
 } 
 
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     background-color: #dbca9a;
     background-image: 
-      radial-gradient(#aa6623 2px, transparent 1px),
-      radial-gradient(#bca9ad 2px, transparent 1px),
-      radial-gradient(#A9ADBC 2px, transparent 1px)
-      radial-gradient(#698471 2px, transparent 1px),
-      radial-gradient(#85afad 2px, transparent 1px);
-    background-size: 80px 80px;
+      radial-gradient(#aa6623 3px, transparent 4px),
+      radial-gradient(#8d7d76 3px, transparent 4px),
+      radial-gradient(#698471 3px, transparent 4px),
+      radial-gradient(#85afad 3px, transparent 4px),
+      radial-gradient(#a7623e 3px, transparent 4px);
+    background-size: 40px 40px;
     background-position: 
-      10px 20px, 
-      40px 50px, 
-      60px 10px, 
-      30px 70px;
-  }
-
-  html {
+      0 0,
+      10px 20px,
+      20px 10px,
+      30px 30px,
+      15px 25px;
     image-rendering: pixelated;
   }
+  
 
 :root {
     --resistor: #704F43;
