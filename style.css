@@ -15,17 +15,17 @@ body {
     width: 100vw;
     overflow: hidden;
     background-image: 
-      radial-gradient(#aa6623 3px, transparent 4px),
-      radial-gradient(#8d7d76 3px, transparent 4px),
-      radial-gradient(#698471 3px, transparent 4px),
-      radial-gradient(#85afad 3px, transparent 4px),
-      radial-gradient(#a7623e 3px, transparent 4px);
+      radial-gradient(#aa6623 2px, transparent 3px),
+      radial-gradient(#8d7d76 2px, transparent 3px),
+      radial-gradient(#698471 2px, transparent 3px),
+      radial-gradient(#85afad 2px, transparent 3px),
+      radial-gradient(#a7623e 2px, transparent 3px);
     background-size: 40px 40px;
     background-position: 
       0 0,
       10px 20px,
       20px 10px,
-      30px 30px,
+      30px 34px,
       15px 25px;
     image-rendering: pixelated;
 }
