@@ -13,6 +13,8 @@
 
 .navbar_svg-frame {
     position: absolute;
+    height: 480px;
+    width: 280px;
     right: 10%;
     top: 30%;
     z-index: 50;
