@@ -6,6 +6,28 @@
     font-style: normal;
 } 
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dbca9a;
+    background-image: 
+      radial-gradient(#aa6623 1px, transparent 1px),
+      radial-gradient(#bca9ad 1px, transparent 1px),
+      radial-gradient(#A9ADBC 1px, transparent 1px)
+      radial-gradient(#698471 1px, transparent 1px),
+      radial-gradient(#85afad 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: 
+      10px 20px, 
+      40px 50px, 
+      60px 10px, 
+      30px 70px;
+  }
+
+  html {
+    image-rendering: pixelated;
+  }
+
 :root {
     --resistor: #704F43;
     --opamp :#835B4D;
@@ -20,8 +42,8 @@
 
 .svg-menu {
     position: absolute;
-    top: 70px; 
-    left: 31px; 
+    top: 65px; 
+    left: 51px; 
     z-index: 51;
     top: 10%;
     z-index: 50;
