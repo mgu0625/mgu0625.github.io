@@ -6,11 +6,11 @@
     font-style: normal;
 } 
 
+
+
 .navbar_svg-frame {
-    width: 207px;
-    height: 329px;
     right: 10%;
-    background-image: url('/websitesvgs/navigationmenu.svg')
+    background-image: url('/websitesvgs/circuitsystem.svg')
     z-index: 100;
 }
 
