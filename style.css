@@ -6,7 +6,10 @@
     font-style: normal;
 } 
 
-
+:root {
+    --resistor: #704F43;
+    --opamp :#835B4D;
+}
 
 .navbar_svg-frame {
     right: 10%;
@@ -14,3 +17,14 @@
     z-index: 100;
 }
 
+svg {
+    cursor: pointer;
+}
+
+#resistor {
+    fill: var(--resistor);
+}
+
+#opamp {
+    fill: var(--opamp);
+}
