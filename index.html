@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
+<script src="script.js"></script>
 
 <body>
   <div class="navbar_svg-frame">
@@ -24,29 +25,6 @@
       <rect width="144" height="386" rx="6" fill="#121212"/>
     </svg>
   <div class="ascii-message"></div>
-  <script>
-    fetch('ascii.txt')
-      .then(res => res.text())
-      .then(text => {
-        document.getElementById("asciiArt").innerHTML = `<pre>${text}</pre>`;
-      });
-  </script>
-  <script>
-    const NUM_ASCII_COPIES = 7;
-  
-    fetch('/Attachments/bkgd.txt')
-      .then(res => res.text())
-      .then(text => {
-        for (let i = 0; i < NUM_ASCII_COPIES; i++) {
-          const asciiEl = document.createElement('div');
-          asciiEl.className = 'ascii-message';
-          asciiEl.style.top = `${Math.random() * 80 + 5}%`;
-          asciiEl.style.left = `${Math.random() * 80 + 5}%`;
-          asciiEl.innerHTML = `<pre>${text}</pre>`;
-          document.body.appendChild(asciiEl);
-        }
-      });
-  </script>
 </body>
 
 
