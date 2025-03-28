@@ -10,12 +10,12 @@
     src: url('Attachments/nintendo-nes-font.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+}
 
 body {
     margin: 0;
     padding: 0;
-    background-color: #dbca9a;
+    background-color: #6D654D;
     position: relative;
     height: 100vh;
     width: 100vw;
@@ -39,7 +39,7 @@ body {
     font-size: 9px;
     white-space: pre-wrap;
     line-height: 1.3;
-    color: rgba(59, 44, 37, 0.15);
+    color: #7B745E;
     position: absolute;
     top: 5%;
     left: 5%;
