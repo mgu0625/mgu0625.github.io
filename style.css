@@ -34,7 +34,7 @@ body {
     font-size: 9px;
     white-space: pre;
     line-height: 1.2;
-    color: rgba(59, 44, 37, 0.3);
+    color: rgba(59, 44, 37);
     position: absolute;
     z-index: 5;
     pointer-events: none;
