@@ -15,36 +15,30 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #6D654D;
-    position: relative;
+    background-color: #dbca9a;
+    background-image:
+      radial-gradient(#698471 1.5px, transparent 2px),
+      radial-gradient(#85afad 1.5px, transparent 2px),
+      radial-gradient(#a7623e 1.5px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    image-rendering: pixelated;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-image:
-        radial-gradient(#698471 1.5px, transparent 2px),
-        radial-gradient(#85afad 1.5px, transparent 2px),
-        radial-gradient(#a7623e 1.5px, transparent 2px);
-    background-size: 40px 40px;
-    background-position: 
-      0 0,
-      10px 20px,
-      20px 10px,
-      30px 34px,
-      15px 25px;
-    image-rendering: pixelated;
+    position: relative;
 }
 
 .ascii-message {
     font-family: 'NintendoNess', monospace;
-    font-size: 7px; 
+    font-size: 9px;
     white-space: pre;
-    line-height: 1.1;
-    color: rgba(123, 116, 94, 0.2); /
+    line-height: 1.2;
+    color: rgba(59, 44, 37, 0.3);
     position: absolute;
-    z-index: 10;
+    z-index: 5;
     pointer-events: none;
-    image-rendering: pixelated;
-  }
+}
   
   
   .navbar_svg-frame {
