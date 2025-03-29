@@ -5,7 +5,7 @@
         const asciiEl = document.createElement('div');
         asciiEl.className = 'ascii-message';
         asciiEl.style.top = '65%';
-        asciiEl.style.left = '20%';
+        asciiEl.style.left = '10%';
         asciiEl.innerHTML = `<pre>${text}</pre>`;
         document.body.appendChild(asciiEl);
       })
