@@ -3,9 +3,7 @@
         .then(res => res.text())
         .then(text => {
         const positions = [
-            { top: '15%', left: '30%' }, // Left
-            { top: '15%', left: '60%' }, // Right
-            { top: '40%', left: '45%' }  // Center
+            { top: '65%', left: '20%' }, // Left
         ];
     
         positions.forEach(pos => {
