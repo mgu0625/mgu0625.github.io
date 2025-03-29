@@ -39,7 +39,8 @@ body {
     font-size: 7px; 
     white-space: pre;
     line-height: 1.1;
-    color: rgba(123, 116, 94, 0.2); 
+    color: rgba(123, 116, 94, 0.2); /
+    position: absolute;
     z-index: 10;
     pointer-events: none;
     image-rendering: pixelated;
