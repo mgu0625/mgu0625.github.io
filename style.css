@@ -36,15 +36,17 @@ body {
 
 .ascii-message {
     font-family: 'NintendoNess', monospace;
-    font-size: 9px;
-    white-space: pre-wrap;
-    line-height: 1.3;
-    color: #7B745E;
+    font-size: 8px; 
+    white-space: pre; 
+    line-height: 1.2;
+    color: rgba(123, 116, 94, 0.3); 
     position: absolute;
-    z-index: 5;
-    padding: 12px;
-    image-rendering: pixelated;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     pointer-events: none;
+    max-width: 300px;
+    overflow-wrap: normal;
+    image-rendering: pixelated;
   }
   
   .navbar_svg-frame {

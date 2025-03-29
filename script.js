@@ -1,7 +1,7 @@
 const positions = [
-    { top: '15%', left: '22%' },
-    { top: '50%', left: '50%' },
-    { top: '15%', left: '70%' }
+    { top: '45%', left: '30%' },
+    { top: '15%', left: '45%' },
+    { top: '45%', left: '60%' }
   ];
   
   fetch('/Attachments/bkgd.txt')
