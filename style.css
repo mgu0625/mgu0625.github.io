@@ -16,14 +16,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #dbca9a;
-    background-image:
-      radial-gradient(#698471 1.5px, transparent 2px),
-      radial-gradient(#85afad 1.5px, transparent 2px),
-      radial-gradient(#a7623e 1.5px, transparent 2px);
-    background-size: 40px 40px;
-    background-repeat: repeat;
-    background-position: 0 0;
-    image-rendering: pixelated;
     height: 100vh;
     width: 100vw;
     overflow: hidden;

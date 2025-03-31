@@ -1,0 +1,32 @@
+from PIL import Image
+import numpy as np
+import potrace
+import os
+
+def png_to_svg(image_path):
+    img = Image.open(image_path).convert("L")
+    threshold = 128
+    bw = img.point(lambda x: 0 if x < threshold else 1, '1')
+
+    bitmap = np.array(bw, dtype=np.uint8)
+    bitmap = 1 - bitmap  # potrace expects black = 1
+
+    bmp = potrace.Bitmap(bitmap)
+    path = bmp.trace()
+
+    svg_path = os.path.splitext(image_path)[0] + ".svg"
+    with open(svg_path, "w") as f:
+        f.write('<?xml version="1.0" standalone="no"?>\n')
+        f.write('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"\n')
+        f.write('"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n')
+        f.write('<svg version="1.1" xmlns="http://www.w3.org/2000/svg">\n')
+        for curve in path:
+            d = curve.tosvg()
+            f.write(f'  <path d="{d}" fill="black" />\n')
+        f.write('</svg>\n')
+
+    print(f"✅ SVG saved as: {svg_path}")
+
+# Usage
+png_to_svg("/Users/monicautashiro-aichouri/Desktop/Website/attachments/ElevatorWebsiteImg/face0.png")
+
