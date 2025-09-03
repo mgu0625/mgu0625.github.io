@@ -106,12 +106,13 @@ html, body {
   place-items: center;              /* center the tray */
 }
 
-.hexbar.loading-title{
-  font-family: 'NES', monospace;   /* <-- ensure NES */
+.hexbar .loading-title {
+  font-family: 'NES', monospace;   /* NES font */
   font-size: clamp(12px, 2.1vw, 18px);
   letter-spacing: .18em;
   color: var(--ink);
   opacity: .95;
+  margin-bottom: 0.5rem; /* small spacing before tray */
 }
 
 /* The rounded, beveled “envelope” frame */
