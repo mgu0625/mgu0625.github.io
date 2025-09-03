@@ -7,14 +7,14 @@ export function initPreloader() {
 
   const lines = [
     'Boot sequence: ',
-    '> tmux new-session -s breedingphotons.imo',
+    '> tmux -s breedingphotons.imo',
     '> ./Initiating__tea__404.exe'
   ];
 
   // Longer total duration (~8.1s)
   const ELLIPSIS_MS = 800;   // 0.8s before typing
   const TYPE_MS     = 3500;  // ~3.5s for all text
-  const HEX_MS      = 3300;  // ~3.3s to fill all 6 hexes
+  const HEX_MS      = 4000;  // ~3.3s to fill all 6 hexes
   const FADE_MS     = 250;
   const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
