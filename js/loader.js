@@ -7,9 +7,8 @@ export function initPreloader() {
 
   const lines = [
     'Boot sequence: ',
-    'alchemy_kernel.sys',
-    '> Mounting breedingphotons.imo',
-    '> ./Initiating__tea__protocol__404.exe'
+    '> tmux new-session -s breedingphotons.imo',
+    '> ./Initiating__tea__404.exe'
   ];
 
   // Longer total duration (~8.1s)
