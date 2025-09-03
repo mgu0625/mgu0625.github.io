@@ -1,29 +1,106 @@
+<!-- html file for graveyard chemist website -->
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Graveyard Chemist's Little Playground</title>
-  <link rel="stylesheet" href="style.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- to ensure good scaling on mobile device -->
+	
+    <title> Graveyard Chemist Website</title>
+	
+	<!-- Link to CSS files -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/components.css">
+	<link rel="stylesheet" href="css/motion.css">
 </head>
-
 <body>
-  <div class="navbar_svg-frame">
-    <!--for circuit system-->
-    <svg width="207" height="519" viewBox="0 0 207 519" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g id="Frame 2">
-      <path id="circuit" d="M8 52.5193V112.624M69.4354 78.6519V29M31.3562 78.6519V491.547M30.9323 491.134L105.125 491.556M122.083 491.547L193 491.929M192.769 491.547V78.6519M193 79.0439H8M160.394 78.6519V29M69.6667 29L160.625 29M105.279 486.32V496.773M108.362 481.094V502M111.446 486.32V496.773M114.529 481.094V502M119.154 486.32V496.773M122.237 481.094V502" stroke="black" stroke-width="0.5"/>
-      <rect id="resistor" x="97.15" y="21.15" width="29.7" height="13.7" stroke="black" stroke-width="0.3"/>
-      <path id="opamp" d="M97.2222 78.875H97.0972H97.0846L91.1846 64.125H132.815L126.915 78.875H126.903H126.778H97.2222ZM97.3472 79.125H126.653V90.875H97.3472V79.125Z" stroke="black" stroke-width="0.25"/>
-      </g>
-      </svg>
-  </div>
-  <div class="svg-menu">
-    <svg width="144" height="386" viewBox="0 0 144 386" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="144" height="386" rx="6" fill="#121212"/>
-    </svg>
-  </div>
-  <script src="script.js"></script>
+	<!-- ============================= -->
+	<!-- for 5 sec preloader   -->
+	<!-- ============================= -->
+	<div id="preloader" aria-live="polite">
+		<div class="loader-grid">
+			
+			<!-- Boot text section (top 1/3 of page) -->
+			<!-- filled by loader.js -->
+			<pre id="bootText" class="boot"></pre>
+			
+			<!-- Loading hex bar section -->
+			<!-- making each hexagon lightup one by one -->
+			<div id="hexLoader" class="hexbar" aria-label="loading">
+				<span class="hex"></span>
+				<span class="hex"></span>
+				<span class="hex"></span>
+				<span class="hex"></span>
+				<span class="hex"></span>
+				<span class="hex"></span>
+				<div class="loading-label">Loading ...</div>
+			</div>	
+			<!-- Bottom-right quarter: sticker image (we’ll swap its src in JS) -->
+			<img id="sticker" class="sticker"
+			     src="assets/images/moomin1_sticker.png"
+			     alt="Moomin sticker">
+        </div>
+    </div>
+	
+	
+	<!-- ================================ -->
+	<!-- About This Site Instruction Part -->
+	<!-- ================================ -->
+	<div id="onboarding" hidden role = "dialog" aria-modal="true" aria-labelledby="ob-title">
+		<h2 id="ob-title">About This Website</h2>
+		
+		<!-- 4x4 grid container -->
+		<div class ="ob-grid ob-grid-4x4">
+			<!-- A) top-left quarter (typed animation) -->
+			<pre id="ob-typed" class="boot ob-cell ob-typed"></pre>
+			
+			<!-- B) center quarter (insstructions) -->
+			<section class="ob-rhyme ob-cell ob-center" arial-label="How to explore">
+				<p>Click and wonder, peek and play,<br>
+				Strange creations light your way.<br>
+				Where art and science twirl in time, <br>
+				A curious dance, a gentle rhyme. </p>
+				
+				<p>Let your child-heart guide the rule,<br>
+				Wonder grows where dreams are fuel.<br>
+				Stray awhile, explore the view-<br>
+				This playground's made for me and you.</p>
+			</section>
+			
+			<!-- C) Bottom-right quarter (moomin ASCII animation) -->
+			<pre id="ob-moomin" class="moomin ob-cell ob-moomin" aria-hidden="true"></pre>
+		</div>
+	</div>
+	
+	
+		
+    <!-- ============================= -->
+    <!-- HOMEPAGE (room & navigation)  -->
+    <!-- ============================= -->
+		
+	<main id="room" hidden>
+		<!-- Stage corner -->
+		<button id="hotspot-stage" class="hotspot" aria-label="Enter Stage"></button>
+
+		<!-- Bulletin board corner -->
+		<button id="hotspot-board" class="hotspot" aria-label="Open Bulletin Board"></button>
+
+		<!-- Elevator corner -->
+		<button id="hotspot-elevator" class="hotspot" aria-label="Open Elevator"></button>
+	</main>
+	
+	
+    <!-- ============================= -->
+    <!-- JAVASCRIPT FILES              -->
+    <!-- ============================= -->
+    <!-- app.js is your entry point that imports loader.js, room.js, etc -->
+    <script type="module" src="js/app.js"></script>
 </body>
-
-
+</html>
+		
+		
+		

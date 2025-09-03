@@ -1,0 +1,259 @@
+/* =======================================================================
+   layout.css — Loading screen + Onboarding/Instructions only
+   fonts, 4×4 grid, hex loader colors, sticker flip animation
+   ======================================================================= */
+
+/* ---------------------------
+   0) Font faces (local files)
+   --------------------------- */
+@font-face {
+  font-family: 'NES';
+  src: url('/assets/fonts/nintendo-nes-font.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RelaxedMonoJP';
+  src: url('/assets/fonts/RelaxedTypingMonoJP-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* -----------------------------------
+   1) Theme tokens (colors + measures)
+   ----------------------------------- */
+
+:root{
+  --bg: #0A0A0C;         /* deep iron background */
+  --ink: #EAEAEA;        /* readable body text */
+  --term: #E0CB10;       /* NES terminal yellow for boot text */
+  --hex1: #f5b3c9;       /* hex colors in order */
+  --hex2: #f7c7a3;
+  --hex3: #fdf6a3;
+  --hex4: #c5f7e5;
+  --hex5: #c5dcf9;
+  --hex6: #e5c5f9;
+  --hex-frame: #D8D8D8;  /* outline for unfilled hex */
+  --persp: 900px;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  height: 100%;
+  /* Default body copy font across the site */
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Utility: visually hidden but screen-reader readable */
+.visually-hidden{
+  position:absolute !important; width:1px; height:1px; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ==========================================================
+   2) LOADING SCREEN (preloader): 4×4 grid + hex bar + sticker
+   ========================================================== */
+
+#preloader{
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: grid; place-items: center;
+}
+
+/* 4×4 grid container that scales well on mobile */
+.loader-grid{
+  width: min(1100px, 94vw);
+  height: min(780px, 90vh);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    repeat(4, 1fr);
+  gap: clamp(8px, 1.6vw, 18px);
+  padding: clamp(8px, 2vw, 20px);
+}
+
+/* ---------- A) Boot text (top-left quarter) ---------- */
+.boot{
+  grid-column: 1 / span 2;       /* quarter = 2×2 cells */
+  grid-row:    1 / span 2;
+  align-self:  end;               /* nudge to bottom-left of its quarter */
+  justify-self: start;
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--term);
+  font-family: 'NES', monospace;  /* NES font for headlines/accent */
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.25;
+  /* subtle glow */
+  filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
+}
+
+/* Optional: "..." pre-typing cue
+   JS can add .is-ellipsis to #bootText for the first ~0.5s, then remove it
+*/
+.boot.is-ellipsis::after{
+  content: '...';
+  margin-left: .25em;
+  animation: dots 500ms steps(1, end) infinite;
+}
+@keyframes dots{
+  0% { opacity: 0.2 }
+  50%{ opacity: 1 }
+  100%{ opacity: 0.2 }
+}
+
+/* ---------- B) Hex loader (center quarter) ---------- */
+.hexbar{
+  grid-column: 2 / span 2;   /* center quarter */
+  grid-row:    2 / span 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(8px, 1.4vw, 16px);
+}
+
+.hexbar .loading-label{
+  font-family: 'NES', monospace; /* accent text uses NES font */
+  font-size: clamp(12px, 2.1vw, 18px);
+  letter-spacing: .18em;
+  opacity: .95;
+}
+
+/* Hexagon shape (outline by default) */
+.hexbar .hex{
+  width: clamp(28px, 5.6vw, 48px);
+  aspect-ratio: 1;
+  display: inline-block;
+  margin: 0 .35rem;
+  position: relative;
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+  background: transparent;
+  box-shadow: inset 0 0 0 3px var(--hex-frame);
+  transition: background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+/* Color each hex by position (order you requested) */
+.hexbar .hex:nth-child(1){ --hex-fill: var(--hex1); }
+.hexbar .hex:nth-child(2){ --hex-fill: var(--hex2); }
+.hexbar .hex:nth-child(3){ --hex-fill: var(--hex3); }
+.hexbar .hex:nth-child(4){ --hex-fill: var(--hex4); }
+.hexbar .hex:nth-child(5){ --hex-fill: var(--hex5); }
+.hexbar .hex:nth-child(6){ --hex-fill: var(--hex6); }
+
+/* JS should add .on sequentially; this fills the hex + slight lift */
+.hexbar .hex.on{
+  background: var(--hex-fill);
+  box-shadow: inset 0 0 0 3px var(--hex-fill), 0 0 .5rem var(--hex-fill);
+  transform: translateY(-1px);
+}
+
+/* ---------- C) Sticker image (bottom-right quarter) ----------
+   Add <img class="sticker" src="/assets/images/your-sticker.png" alt="">
+   This flips side-to-side and gently floats; replace with any PNG/WebP.
+*/
+.sticker{
+  grid-column: 3 / span 2;   /* bottom-right quarter */
+  grid-row:    3 / span 2;
+  align-self:  center; justify-self: center;
+  width: min(360px, 40vw);   /* responsive sizing */
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  user-select: none; pointer-events: none;
+  animation: stickerFloat 3.4s ease-in-out infinite,
+             stickerFlip  2.8s ease-in-out infinite alternate;
+  transform-origin: 50% 60%;
+}
+@keyframes stickerFloat{
+  0%   { transform: translateY(0)      rotate(0deg) }
+  50%  { transform: translateY(-6px)   rotate(-1.2deg) }
+  100% { transform: translateY(0)      rotate(0deg) }
+}
+@keyframes stickerFlip{
+  0%   { transform: scaleX(1) }
+  100% { transform: scaleX(-1) }  /* mirrors horizontally for “flipbook” feel */
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hexbar .hex, .hexbar .hex.on, .sticker{
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==============================================================
+   3) ONBOARDING / INSTRUCTIONS (4×4 grid, same quarter mapping)
+   ============================================================== */
+
+#onboarding{
+  position: fixed; inset: 0; z-index: 9998; background: var(--bg);
+  display: grid; place-items: center;
+}
+
+.ob-grid{
+  width: min(1100px, 94vw);
+  height: min(780px, 90vh);
+}
+
+/* 4×4 grid; each “quarter” spans 2×2 cells */
+.ob-grid-4x4{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    repeat(4, 1fr);
+  gap: clamp(8px, 1.6vw, 18px);
+  padding: clamp(8px, 2vw, 20px);
+}
+
+/* A) Typed greeting — top-left quarter */
+.ob-typed{
+  grid-column: 1 / span 2;
+  grid-row:    1 / span 2;
+  align-self:  end; justify-self: start;
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--term);
+  font-family: 'NES', monospace;   /* headline/accent font */
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.25;
+  filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
+}
+
+/* B) Instructions — center quarter */
+.ob-center{
+  grid-column: 2 / span 2;
+  grid-row:    2 / span 2;
+  text-align: center;
+  color: var(--ink);
+  opacity: .95;
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(14px, 2.1vw, 20px);
+  line-height: 1.5;
+}
+
+/* C) Moomin area (if you keep an image here on onboarding, too) */
+.ob-moomin{
+  grid-column: 3 / span 2;
+  grid-row:    3 / span 2;
+  margin: 0;
+  line-height: 1.05;
+  font-size: clamp(10px, 1.6vw, 16px);
+  color: var(--ink);
+}
+
+/* --------------------------
+   4) Mobile / small screens
+   -------------------------- */
+@media (max-width: 700px){
+  .loader-grid,
+  .ob-grid-4x4{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    width: 100vw; height: 100vh;
+    gap: clamp(8px, 3vw, 20px);
+  }
+  .boot       { grid-column: 1; grid-row: 1; justify-self: start; align-self: end; }
+  .hexbar     { grid-column: 1; grid-row: 2; }
+  .sticker    { grid-column: 1; grid-row: 3; width: min(300px, 60vw); }
+
+  .ob-typed   { grid-column: 1; grid-row: 1; }
+  .ob-center  { grid-column: 1; grid-row: 2; }
+  .ob-moomin  { grid-column: 1; grid-row: 3; }
+  }s
