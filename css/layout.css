@@ -83,7 +83,6 @@ html, body {
   font-family: 'NES', monospace;  /* NES font for headlines/accent */
   font-size: clamp(12px, 1.6vw, 16px);
   line-height: 1.25;
-  /* subtle glow */
   filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
 }
 
