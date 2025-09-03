@@ -75,7 +75,7 @@ html, body {
 .boot{
   grid-column: 1 / span 2;       /* quarter = 2×2 cells */
   grid-row:    1 / span 2;
-  align-self:  end;               /* nudge to bottom-left of its quarter */
+  align-self:  start;             
   justify-self: start;
   margin: 0;
   white-space: pre-wrap;
@@ -116,7 +116,7 @@ html, body {
   opacity: .95;
 }
 
-/* Hexagon shape (outline by default) */
+/* Hexagon shape (default outline) */
 .hexbar .hex{
   width: clamp(28px, 5.6vw, 48px);
   aspect-ratio: 1;
@@ -129,7 +129,7 @@ html, body {
   transition: background .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 
-/* Color each hex by position (order you requested) */
+/* Color each hex by position  */
 .hexbar .hex:nth-child(1){ --hex-fill: var(--hex1); }
 .hexbar .hex:nth-child(2){ --hex-fill: var(--hex2); }
 .hexbar .hex:nth-child(3){ --hex-fill: var(--hex3); }
@@ -142,6 +142,24 @@ html, body {
   background: var(--hex-fill);
   box-shadow: inset 0 0 0 3px var(--hex-fill), 0 0 .5rem var(--hex-fill);
   transform: translateY(-1px);
+}
+
+/* 0.5s pre-typing dots */
+.boot.is-ellipsis::after{
+  content: '...';
+  margin-left: .25em;
+  animation: dots 500ms steps(1, end) infinite;
+}
+@keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+
+/* Mobile: stack vertically */
+@media (max-width: 700px){
+  .loader-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .boot   { grid-column: 1; grid-row: 1; align-self: start; }
+  .hexbar { grid-column: 1; grid-row: 2; }
 }
 
 /* ---------- C) Sticker image (bottom-right quarter) ----------
