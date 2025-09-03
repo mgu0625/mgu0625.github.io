@@ -1,24 +1,26 @@
+// js/app.js
 // for state machine and router-ish navigation for homepage
-
 import { initPreloader } from './loader.js';
 
-// Start loader as soon as the module loads
-initPreloader();
+window.addEventListener('DOMContentLoaded', () => {
+  // 1) run the loader after DOM is ready
+  initPreloader();
 
-// When the loader ends, reveal your onboarding (or go straight home)
-window.addEventListener('preloader:done', () => {
-  // Example: show #onboarding if you have it
-  const onboarding = document.getElementById('onboarding');
-  const room       = document.getElementById('room'); // homepage shell
-  if (onboarding) {
-    onboarding.hidden = false;
-    // if you want onboarding to auto-advance after ~5s, do it here
-    setTimeout(() => {
-      onboarding.remove();
-      if (room) room.hidden = false;
-    }, 5000);
-  } else {
-    // no onboarding yet? just show homepage
-    if (room) room.hidden = false;
-  }
+  // 2) when loader finishes, show onboarding (then auto-advance to home)
+  window.addEventListener('preloader:done', () => {
+    const onboarding = document.getElementById('onboarding');
+    const room       = document.getElementById('room');
+
+    if (onboarding) {
+      onboarding.hidden = false;
+
+      // auto-advance after ~5s (adjust if you like)
+      setTimeout(() => {
+        onboarding.remove();
+        if (room) room.hidden = false;
+      }, 5000);
+    } else if (room) {
+      room.hidden = false;
+    }
+  });
 });
