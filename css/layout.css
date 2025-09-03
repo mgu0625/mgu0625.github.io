@@ -11,6 +11,9 @@
   src: url('/assets/fonts/nintendo-nes-font.ttf') format('truetype');
   font-display: swap;
 }
+.ff-nes { font-family: 'NES', monospace !important; 
+}
+
 @font-face {
   font-family: 'RelaxedMonoJP';
   src: url('/assets/fonts/RelaxedTypingMonoJP-Light.ttf') format('truetype');

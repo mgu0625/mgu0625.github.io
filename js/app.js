@@ -14,11 +14,11 @@ window.addEventListener('DOMContentLoaded', () => {
     if (onboarding) {
       onboarding.hidden = false;
 
-      // auto-advance after ~5s (adjust if you like)
+      // auto-advance after ~8s
       setTimeout(() => {
         onboarding.remove();
         if (room) room.hidden = false;
-      }, 5000);
+      }, 8800);
     } else if (room) {
       room.hidden = false;
     }
