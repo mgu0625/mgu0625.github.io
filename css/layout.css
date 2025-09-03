@@ -79,49 +79,70 @@ html, body {
   justify-self: start;
   margin: 0;
   white-space: pre-wrap;
-  color: var(--term);
-  font-family: 'NES', monospace;  /* NES font for headlines/accent */
+  font-family: 'NES', monospace;
+  color: var(--term);            /* #E0CB10 */
   font-size: clamp(12px, 1.6vw, 16px);
   line-height: 1.25;
+  /* subtle glow */
   filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
 }
 
-/* Optional: "..." pre-typing cue
-   JS can add .is-ellipsis to #bootText for the first ~0.5s, then remove it
-*/
 .boot.is-ellipsis::after{
   content: '...';
   margin-left: .25em;
   animation: dots 500ms steps(1, end) infinite;
 }
-@keyframes dots{
-  0% { opacity: 0.2 }
-  50%{ opacity: 1 }
-  100%{ opacity: 0.2 }
+@keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+
+
+.loading-title{
+  grid-column: 2 / span 2;
+  grid-row:    1 / span 1;
+  align-self:  end;                 /* hug the bottom of the top row */
+  justify-self: center;
+  margin-bottom: clamp(6px, 1.2vw, 12px);
+  font-family: 'NES', monospace;
+  font-size: clamp(12px, 2.1vw, 18px);
+  letter-spacing: .18em;
+  color: var(--ink);
+  opacity: .95;
 }
+
+
 
 /* ---------- B) Hex loader (center quarter) ---------- */
 .hexbar{
   grid-column: 2 / span 2;   /* center quarter */
   grid-row:    2 / span 2;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: clamp(8px, 1.4vw, 16px);
+  display: grid;
+  place-items: center;              /* center the tray */
 }
 
-.hexbar .loading-label{
-  font-family: 'NES', monospace; /* accent text uses NES font */
-  font-size: clamp(12px, 2.1vw, 18px);
-  letter-spacing: .18em;
-  opacity: .95;
+/* The rounded, beveled “envelope” frame */
+.tray{
+  --tray-bg: rgba(0,0,0,0.18);             /* subtle fill */
+  --tray-edge: var(--hex-frame);           /* #D8D8D8 by default */
+  padding: clamp(10px, 1.8vw, 16px) clamp(14px, 2.4vw, 22px);
+  border: clamp(4px, .6vw, 6px) solid var(--tray-edge);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.1)) , var(--tray-bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),   /* inner highlight */
+    0 2px 0 rgba(0,0,0,0.25);               /* outer drop for depth */
 }
 
 /* Hexagon shape (default outline) */
-.hexbar .hex{
+.hexrow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.2vw, 12px);
+}
+
+.hexrow .hex{
   width: clamp(28px, 5.6vw, 48px);
   aspect-ratio: 1;
-  display: inline-block;
-  margin: 0 .35rem;
-  position: relative;
+
   clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
   background: transparent;
   box-shadow: inset 0 0 0 3px var(--hex-frame);
@@ -129,27 +150,21 @@ html, body {
 }
 
 /* Color each hex by position  */
-.hexbar .hex:nth-child(1){ --hex-fill: var(--hex1); }
-.hexbar .hex:nth-child(2){ --hex-fill: var(--hex2); }
-.hexbar .hex:nth-child(3){ --hex-fill: var(--hex3); }
-.hexbar .hex:nth-child(4){ --hex-fill: var(--hex4); }
-.hexbar .hex:nth-child(5){ --hex-fill: var(--hex5); }
-.hexbar .hex:nth-child(6){ --hex-fill: var(--hex6); }
+.hexrow .hex:nth-child(1){ --hex-fill: var(--hex1); }
+.hexrow .hex:nth-child(2){ --hex-fill: var(--hex2); }
+.hexrow .hex:nth-child(3){ --hex-fill: var(--hex3); }
+.hexrow .hex:nth-child(4){ --hex-fill: var(--hex4); }
+.hexrow .hex:nth-child(5){ --hex-fill: var(--hex5); }
+.hexrow .hex:nth-child(6){ --hex-fill: var(--hex6); }
 
-/* JS should add .on sequentially; this fills the hex + slight lift */
-.hexbar .hex.on{
+.hexrow .hex.on{
   background: var(--hex-fill);
   box-shadow: inset 0 0 0 3px var(--hex-fill), 0 0 .5rem var(--hex-fill);
   transform: translateY(-1px);
 }
 
-/* 0.5s pre-typing dots */
-.boot.is-ellipsis::after{
-  content: '...';
-  margin-left: .25em;
-  animation: dots 500ms steps(1, end) infinite;
-}
-@keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+
+
 
 /* Mobile: stack vertically */
 @media (max-width: 700px){
@@ -158,6 +173,7 @@ html, body {
     grid-template-rows: auto 1fr;
   }
   .boot   { grid-column: 1; grid-row: 1; align-self: start; }
+  .loading-title { grid-column: 1; grid-row: 2; align-self: start; justify-self: center; }
   .hexbar { grid-column: 1; grid-row: 2; }
 }
 
