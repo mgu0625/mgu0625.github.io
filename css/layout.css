@@ -239,12 +239,12 @@ html, body {
 .ob-typed{
   grid-column: 1 / span 2;
   grid-row:    1 / span 2;
-  align-self:  end; justify-self: start;
+  align-self:  start; justify-self: start;
   margin: 0;
   white-space: pre-wrap;
   color: var(--term);
   font-family: 'NES', monospace;   /* headline/accent font */
-  font-size: clamp(12px, 1.6vw, 16px);
+  font-size: clamp(12px, 1.6vw, 14px);
   line-height: 1.25;
   filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
 }
@@ -259,19 +259,27 @@ html, body {
 .ob-center .ob-title{
   margin: 0 0 clamp(10px,1.6vw,16px);
   text-align: center;
-  font-family: 'NES', monospace;     /* NES for the heading */
-  font-size: clamp(14px, 2.3vw, 24px);
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(16px, 2.3vw, 24px);
   letter-spacing: .06em;
   color: var(--ink);
 }
 
 .ob-center .ob-title .jp{
   display: block;
-  font-family: 'NES', monospace;     /* keep NES for consistency */
-  font-size: clamp(12px, 2vw, 20px);
-  letter-spacing: .04em;
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 400;
+  font-size: clamp(13px, 1.6vw, 18px);  /* smaller than the English title */
+  letter-spacing: .01em;
+  opacity: .92;                          /* subtle hierarchy */
 }
 @keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+
+.ob-center{
+  max-width: 42ch;                       /* comfortable line length */
+  margin-inline: auto;
+  text-align: left;
+}
 
 /* C) Moomin area (if you keep an image here on onboarding, too) */
 .ob-moomin{
