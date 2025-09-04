@@ -19,3 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
   });
 });
+
+['assets/images/moomin1_sticker.png','assets/images/moomin2_sticker.png'].forEach(src=>{
+  const i = new Image(); i.src = src;
+});

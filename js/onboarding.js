@@ -37,9 +37,13 @@ export function initOnboarding({
     }
   }, ellipsisMs);
 
+  
+
   // 4) end the scene exactly at totalMs
   setTimeout(() => {
     // Let app.js decide what to show next
     window.dispatchEvent(new CustomEvent('onboarding:done'));
   }, totalMs);
+
+
 }
