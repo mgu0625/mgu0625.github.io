@@ -238,7 +238,7 @@ html, body {
 /* A) Typed greeting — top-left quarter */
 .ob-typed{
   grid-column: 1 / span 2;
-  grid-row:    1 / span 2;
+  grid-row:    1 / span 1;
   align-self:  start; justify-self: start;
   margin: 0;
   white-space: pre-wrap;
@@ -255,58 +255,65 @@ html, body {
   animation:dots 500ms steps(1,end) infinite;
 }
 
-/* Center title in NES */
-.ob-center .ob-title{
-  margin: 0 0 clamp(10px,1.6vw,16px);
+/* Center title */
+.ob-title{
+  grid-column: 2 / span 2;   /* cols 2–3 */
+  grid-row:    2 / span 1;   /* row 2 only */
+  align-self:  start;
+  justify-self: center;
   text-align: center;
-  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: clamp(16px, 2.3vw, 24px);
-  letter-spacing: .06em;
-  color: var(--ink);
-}
-
-.ob-center .ob-title .jp{
-  display: block;
+  margin: 0;
   font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-weight: 400;
-  font-size: clamp(13px, 1.6vw, 18px);  /* smaller than the English title */
+  font-size: clamp(16px, 1.9vw, 22px);   /* smaller than before */
+  letter-spacing: .02em;
+  color: var(--ink);
+}
+.ob-title .jp{
+  display: block;
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(13px, 1.6vw, 18px);   /* smaller than English */
   letter-spacing: .01em;
-  opacity: .92;                          /* subtle hierarchy */
+  opacity: .92;
 }
 @keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
 
-.ob-center{
-  max-width: 42ch;                       /* comfortable line length */
-  margin-inline: auto;
+.ob-rhyme{
+  grid-column: 2 / span 2;   /* cols 2–3 (1 grid space on each side) */
+  grid-row:    2 / span 3;   /* rows 2–4 */
+  align-self:  start;
+  justify-self: stretch;
+  max-width: 42ch;
+  margin: clamp(10px, 1.6vw, 18px) auto 0;  /* push below title a bit */
   text-align: left;
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(14px, 2.0vw, 20px);
+  line-height: 1.55;
 }
+
 
 /* C) Moomin area (if you keep an image here on onboarding, too) */
 .ob-moomin{
-  grid-column: 3 / span 2;
-  grid-row:    3 / span 2;
-  margin: 0;
-  line-height: 1.05;
-  font-size: clamp(10px, 1.6vw, 16px);
-  color: var(--ink);
+  grid-column: 4 / span 1;
+  grid-row:    1 / span 2;
+  align-self:  start;
+  justify-self: end;
+  width: min(380px, 42vw);
+  aspect-ratio: 1 / 1;
+  background: url('assets/images/moomin1_sticker.png') center/contain no-repeat;
+  /* replaced with flip animation in js */
 }
 
 /* --------------------------
    4) Mobile / small screens
    -------------------------- */
 @media (max-width: 700px){
-  .loader-grid,
   .ob-grid-4x4{
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr;
-    width: 100vw; height: 100vh;
-    gap: clamp(8px, 3vw, 20px);
+    grid-template-rows: auto auto auto auto;
   }
-  .boot       { grid-column: 1; grid-row: 1; justify-self: start; align-self: end; }
-  .hexbar     { grid-column: 1; grid-row: 2; }
-  .sticker    { grid-column: 1; grid-row: 3; width: min(300px, 60vw); }
-
-  .ob-typed   { grid-column: 1; grid-row: 1; }
-  .ob-center  { grid-column: 1; grid-row: 2; }
-  .ob-moomin  { grid-column: 1; grid-row: 3; }
-  }
+  .ob-typed { grid-column: 1; grid-row: 1; }
+  .ob-title { grid-column: 1; grid-row: 2; }
+  .ob-rhyme { grid-column: 1; grid-row: 3; margin-inline: 6vw; }
+  .ob-moomin{ grid-column: 1; grid-row: 4; justify-self: center; width: min(320px, 70vw); }
+}
