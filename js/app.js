@@ -1,26 +1,21 @@
-// js/app.js
-// for state machine and router-ish navigation for homepage
 import { initPreloader } from './loader.js';
+import { initOnboarding } from './onboarding.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  // 1) run the loader after DOM is ready
   initPreloader();
 
-  // 2) when loader finishes, show onboarding (then auto-advance to home)
+  // When loading part 1 finishes, run onboarding (part 2)
   window.addEventListener('preloader:done', () => {
     const onboarding = document.getElementById('onboarding');
     const room       = document.getElementById('room');
 
-    if (onboarding) {
-      onboarding.hidden = false;
+    // Kick off Part 2 (10s)
+    initOnboarding({ totalMs: 10000 });
 
-      // auto-advance after ~8s
-      setTimeout(() => {
-        onboarding.remove();
-        if (room) room.hidden = false;
-      }, 8800);
-    } else if (room) {
-      room.hidden = false;
-    }
+    // When Part 2 ends, hide it and show the homepage
+    window.addEventListener('onboarding:done', () => {
+      if (onboarding) onboarding.remove();
+      if (room) room.hidden = false;
+    }, { once: true });
   });
 });
