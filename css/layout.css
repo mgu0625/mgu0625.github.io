@@ -292,13 +292,10 @@ html, body {
   justify-self: end;
 
   /* scale up crisp for pixel art */
-  width: min(220px, 30vw);
-  height: auto;
+  width: 64px;
+  height: 64px;
   image-rendering: pixelated;     /* modern browsers */
   image-rendering: crisp-edges;   /* fallback */
-  /* optional gentle bob */
-  animation: moominFloat 5.6s ease-in-out infinite;
-  transform-origin: 50% 60%;
 }
 
 @keyframes moominFloat{
