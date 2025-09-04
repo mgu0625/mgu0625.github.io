@@ -291,7 +291,6 @@ html, body {
   align-self:  start;
   justify-self: end;
 
-  /* scale up crisp for pixel art */
   width: 64px;
   height: 64px;
   image-rendering: pixelated;     /* modern browsers */
