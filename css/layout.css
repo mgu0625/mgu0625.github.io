@@ -333,32 +333,41 @@ html, body {
 }
 
 /* Header wrapper */
-.site-hero {
-  display: grid;
-  grid-template-columns: auto 1fr auto;  /* gear | title | gear */
-  align-items: center;
-  gap: clamp(12px, 2vw, 28px);
-  padding: clamp(10px, 3vw, 28px) clamp(12px, 4vw, 36px);
+.site-hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(12px, 2.5vw, 28px);
+  padding:clamp(10px, 3vw, 24px) clamp(12px, 4vw, 36px);
 }
 
 /* Title */
 .site-title {
-  margin: 0;
-  text-align: center;
-  font-family: 'NES', monospace;
-  font-size: clamp(18px, 4.4vw, 44px);
-  color: var(--term);
-  letter-spacing: .04em;
-  text-shadow: 0 0 .2rem rgba(224,203,16,.35);
+  font-family:"NES", monospace;
+  font-size:clamp(18px, 4vw, 36px);
+  line-height:1;                /* tighter rows */
+  letter-spacing:0;             /* remove extra tracking */
+  font-kerning:none;            /* kill kerning */
+  font-variant-ligatures:none;  /* kill ligatures */
+  white-space:nowrap;           /* keep on one line */
+  color:var(--term);            /* the yellow var */
+  text-shadow:0 0 .2rem rgba(224,203,16,.35);
+  -webkit-font-smoothing:none;  /* the pixel-y look */
+  -moz-osx-font-smoothing:unset;
+}
+
+@media (max-width: 520px){
+  .title-nes{ white-space:normal; text-align:center; }
 }
 
 /* Gears */
-.gear {
-  width: clamp(48px, 8vw, 110px);  /* responsive sizing */
-  height: auto;
-  animation: spin 12s linear infinite;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
+.gear{
+  width:clamp(36px, 6vw, 64px);
+  height:auto;
+  animation:spin 14s linear infinite;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));
 }
+
 
 /* Optional: spin directions */
 .gear-left  { animation-direction: normal; }
