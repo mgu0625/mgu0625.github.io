@@ -332,30 +332,44 @@ html, body {
   --mint: #38A0BD;   /* main mint gear color */
 }
 
+.page {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);     /* 4 equal rows = quarters */
+  grid-template-columns: repeat(4, 1fr);  /* 4 equal columns */
+  min-height: 100svh;                     /* use small-viewport height */
+}
+
 /* Header wrapper */
-.site-hero{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:clamp(8px, 2vw, 20px);
-  padding:clamp(10px, 3vw, 24px);
-  max-width: 100%;
+.site-hero {
+  grid-area: 1 / 2 / 2 / 4;               /* row-start / col-start / row-end / col-end */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.8vw, 20px);
+  padding-inline: clamp(8px, 2vw, 32px);
+  block-size: 25vh;                       /* takes top quarter of the page */
   overflow: hidden;
 }
 
 /* Title */
 .site-title {
   font-family:"NES", monospace;
-  font-size:clamp(18px, 4vw, 36px);
-  line-height:1;                /* tighter rows */
-  letter-spacing:0;             /* remove extra tracking */
-  font-kerning: none;            /* kill kerning */
-  font-variant-ligatures: none;  /* kill ligatures */
-  white-space: nowrap;           /* keep on one line */
-  color:var(--term);            /* the yellow var */
-  text-shadow:0 0 .2rem rgba(224,203,16,.35);
-  -webkit-font-smoothing:none;  /* the pixel-y look */
-  -moz-osx-font-smoothing:unset;
+  /* tie text size to the header box, not the page:
+     - 3.2vh keeps it proportional to the 25vh header
+     - 6vw allows it to grow on wide screens
+     - clamps avoid extremes */
+  font-size: clamp(12px, min(6vw, 3.2vh), 40px);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--term);
+  text-shadow: 0 0 .2rem rgba(224,203,16,.35);
+  font-kerning: none;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 520px){
