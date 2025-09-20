@@ -337,8 +337,10 @@ html, body {
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:clamp(12px, 2.5vw, 28px);
-  padding:clamp(10px, 3vw, 24px) clamp(12px, 4vw, 36px);
+  gap:clamp(8px, 2vw, 20px);
+  padding:clamp(10px, 3vw, 24px);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Title */
@@ -347,9 +349,9 @@ html, body {
   font-size:clamp(18px, 4vw, 36px);
   line-height:1;                /* tighter rows */
   letter-spacing:0;             /* remove extra tracking */
-  font-kerning:none;            /* kill kerning */
-  font-variant-ligatures:none;  /* kill ligatures */
-  white-space:nowrap;           /* keep on one line */
+  font-kerning: none;            /* kill kerning */
+  font-variant-ligatures: none;  /* kill ligatures */
+  white-space: nowrap;           /* keep on one line */
   color:var(--term);            /* the yellow var */
   text-shadow:0 0 .2rem rgba(224,203,16,.35);
   -webkit-font-smoothing:none;  /* the pixel-y look */
