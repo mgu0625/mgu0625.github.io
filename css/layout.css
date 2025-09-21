@@ -328,9 +328,8 @@ html, body {
    -------------------------- */
 
 :root {
-  --term: #E0CB10;   /* NES yellow from your loading screen */
-  --gear: #38A0BD;   /* main mint gear color */
-}
+  --term: #E0CB10;
+  --gear: #38A0BD;
 
 .page {
   display: grid;
@@ -374,11 +373,8 @@ html, body {
   text-overflow: ellipsis;
 }
 
-html,body{height:100%;margin:0}
 
-@media (min-width: 1400px){
-  .site-hero{ grid-area:1 / 2 / 2 / 4; }
-}
+
 
 /* Gears */
 
