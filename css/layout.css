@@ -377,11 +377,14 @@ html, body {
 }
 
 /* Gears */
+
 .gear {
   width: clamp(28px, 6vw, 64px);
   aspect-ratio: 1;
   display: block;
-  color: #C5F7E5; 
+  place-self:center;
+  color: #C5F7E5;
+  pointer-events:none; 
 }
 
 /* pick a stroke width that reads at your smallest size */
