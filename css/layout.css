@@ -379,6 +379,7 @@ html, body {
 /* Gears */
 
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
 .gear {
   width: clamp(28px, 6vw, 64px);
   aspect-ratio: 1;
@@ -395,4 +396,19 @@ html, body {
 
 @media (prefers-reduced-motion: reduce){
   .gear{ animation:none; }
+}
+
+#room {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#room > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
