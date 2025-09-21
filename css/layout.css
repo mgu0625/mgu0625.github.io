@@ -381,21 +381,13 @@ html, body {
   width: clamp(28px, 6vw, 64px);
   aspect-ratio: 1;
   display: block;
-}
-.gear *,                /* covers <use> and inner <path> */
-.gear use,
-.gear path,
-.gear circle {
-  vector-effect: non-scaling-stroke; /* stroke width stays constant */
-  shape-rendering: crispEdges;       /* less anti-aliasing blur */
-  stroke-linejoin: miter;            /* no rounding at corners */
-  stroke-linecap: butt;              /* no rounded ends */
+  color: #C5F7E5; 
 }
 
 /* pick a stroke width that reads at your smallest size */
-.gear path,
-.gear circle {
-  stroke-width: 2.5;  /* tweak: ~2–3 works well for 28–64px icons */
+.gear use,
+.gear path {
+  shape-rendering: crispEdges;
 }
 
 /* Optional: spin directions */
