@@ -354,11 +354,7 @@ html, body {
 /* Title */
 .site-title {
   font-family:"NES", monospace;
-  /* tie text size to the header box, not the page:
-     - 3.2vh keeps it proportional to the 25vh header
-     - 6vw allows it to grow on wide screens
-     - clamps avoid extremes */
-  font-size: clamp(12px, min(6vw, 4.2vh), 40px);
+  font-size: clamp(12px, min(5.2vw, 3.8vh), 38px);
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
@@ -383,8 +379,9 @@ html, body {
   aspect-ratio: 1;
   display: block;
   place-self:center;
-  color: #C5F7E5;
   pointer-events:none; 
+  animation: spin 16s linear infinite;
+  transform-origin: 50% 50%;
 }
 
 /* pick a stroke width that reads at your smallest size */
@@ -394,22 +391,11 @@ html, body {
 }
 
 /* Optional: spin directions */
-.gear-left  { animation-direction: normal; }
-.gear-right { animation-direction: reverse; }
+.gear-tl { animation-direction: normal; } 
+.gear-tr { animation-direction: reverse; }
 
-/* Rotation animation */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+
 
 @media (prefers-reduced-motion: reduce){
   .gear{ animation: none; }
-}
-
-/* Mobile: collapse to one gear */
-@media (max-width: 520px) {
-  .gear-left { display: none; }
-  .site-hero {
-    grid-template-columns: 1fr auto;
-  }
 }
