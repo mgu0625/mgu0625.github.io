@@ -329,7 +329,7 @@ html, body {
 
 :root {
   --term: #E0CB10;   /* NES yellow from your loading screen */
-  --mint: #38A0BD;   /* main mint gear color */
+  --gear: #38A0BD;   /* main mint gear color */
 }
 
 .page {
