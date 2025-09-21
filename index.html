@@ -128,21 +128,20 @@
     <!-- ============================= -->
 
 	<body class="page">
-  <!-- corner gears (external reference to <g id="gear-shape">) -->
-  		<svg class="gear gear-tl" viewBox="0 0 166 166" aria-hidden="true">
-    		<use href="assets/images/gears.svg#gear-shape"></use>
+  <!-- corner gears -->
+  		<svg class="gear gear-tl" viewBox="0 0 166 166" aria-hidden="true" focusable="false">
+    		<use href="assets/images/gears.svg#gear-shape" xlink:href="assets/images/gears.svg#gear-shape"></use>
+  		</svg>
+ 	 	<svg class="gear gear-tr" viewBox="0 0 166 166" aria-hidden="true" focusable="false">
+    		<use href="assets/images/gears.svg#gear-shape" xlink:href="assets/images/gears.svg#gear-shape"></use>
   		</svg>
 
-  		<svg class="gear gear-tr" viewBox="0 0 166 166" aria-hidden="true">
-    		<use href="assets/images/gears.svg#gear-shape"></use>
-  		</svg>
-	<header class="site-hero" aria-label="Site title">
-    	<h1 class="site-title">Graveyard Chemist's Playground!</h1>
-  	</header>
-		
-	<main id="room" hidden>
-    <!-- your main content -->
-  	</main>
+  		<!-- header stays clean so title size doesn't change -->
+  		<header class="site-hero" aria-label="Site title">
+    		<h1 class="site-title">Graveyard Chemist's Playground!</h1>
+  		</header>
+
+  		<main id="room" hidden><!-- … --></main>		
 	
 	
     <!-- ============================= -->
@@ -150,7 +149,7 @@
     <!-- ============================= -->
     <!-- app.js is your entry point that imports loader.js, room.js, etc -->
     <script type="module" src="js/app.js"></script>
-</body>
+	</body>
 </html>
 		
 		
