@@ -352,12 +352,7 @@ html, body {
   overflow: hidden;
 }
 
-@media (max-width: 1400px){ .site-hero{ grid-area:1 / 2 / 2 / 5; } } /* span 3 cols */
-@media (max-width: 1100px){ .site-hero{ grid-area:1 / 1 / 2 / 5; } } /* span all 4 */
 
-@media (max-width:520px){
-  .site-title{ white-space:normal; text-align:center; }
-}
 
 /* Title */
 .site-title {
