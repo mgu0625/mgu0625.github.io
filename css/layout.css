@@ -364,6 +364,8 @@ html, body {
   font-size: clamp(12px, min(5.2vw, 3.8vh), 38px);
   line-height: 1;
   letter-spacing: 0;
+  width:100%;
+  text-align:center;
   white-space: nowrap;
   color: var(--term);
   text-shadow: 0 0 .2rem rgba(224,203,16,.35);
@@ -377,8 +379,8 @@ html, body {
 
 html,body{height:100%;margin:0}
 
-@media (max-width: 520px){
-  .title-nes{ white-space:normal; text-align:center; }
+@media (min-width: 1400px){
+  .site-hero{ grid-area:1 / 2 / 2 / 4; }
 }
 
 /* Gears */
