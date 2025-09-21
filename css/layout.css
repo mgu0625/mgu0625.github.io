@@ -341,7 +341,8 @@ html, body {
 
 /* Header wrapper */
 .site-hero {
-  grid-area: 1 / 2 / 2 / 4;               /* row-start / col-start / row-end / col-end */
+  grid-column: 1 / -1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,6 +361,7 @@ html, body {
 
 /* Title */
 .site-title {
+  margin: 0;
   font-family:"NES", monospace;
   font-size: clamp(12px, min(5.2vw, 3.8vh), 38px);
   line-height: 1;
@@ -397,18 +399,8 @@ html,body{height:100%;margin:0}
 }
 
 /* pick a stroke width that reads at your smallest size */
-.gear-tl{
-  grid-area:1 / 1 / 2 / 2;
-  justify-self:start; align-self:start;
-  margin:clamp(8px,2vw,24px);
-  animation-direction:normal;
-}
-.gear-tr{
-  grid-area:1 / 4 / 2 / 5;
-  justify-self:end; align-self:start;
-  margin:clamp(8px,2vw,24px);
-  animation-direction:reverse;
-}
+.gear-tl{ grid-area: 1 / 1 / 2 / 2; justify-self: start; align-self: start; }
+.gear-tr{ grid-area: 1 / 4 / 2 / 5; justify-self: end;   align-self: start; }
 
 @media (prefers-reduced-motion: reduce){
   .gear{ animation:none; }
