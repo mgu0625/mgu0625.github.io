@@ -358,7 +358,7 @@ html, body {
      - 3.2vh keeps it proportional to the 25vh header
      - 6vw allows it to grow on wide screens
      - clamps avoid extremes */
-  font-size: clamp(12px, min(6vw, 3.2vh), 40px);
+  font-size: clamp(12px, min(6vw, 4.2vh), 40px);
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
