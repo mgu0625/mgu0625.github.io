@@ -1,0 +1,411 @@
+/* =======================================================================
+   layout.css — Loading screen + Onboarding/Instructions only
+   fonts, 4×4 grid, hex loader colors, sticker flip animation
+   ======================================================================= */
+
+/* ---------------------------
+   0) Font faces (local files)
+   --------------------------- */
+@font-face {
+  font-family: 'NES';
+  src: url('/assets/fonts/nintendo-nes-font.ttf') format('truetype');
+  font-display: swap;
+}
+.ff-nes { font-family: 'NES', monospace !important; 
+}
+
+@font-face {
+  font-family: 'RelaxedMonoJP';
+  src: url('/assets/fonts/RelaxedTypingMonoJP-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* -----------------------------------
+   1) Theme tokens (colors + measures)
+   ----------------------------------- */
+
+:root{
+  --bg: #0A0A0C;         /* deep iron background */
+  --ink: #EAEAEA;        /* readable body text */
+  --term: #E0CB10;       /* NES terminal yellow for boot text */
+  --hex1: #f5b3c9;       /* hex colors in order */
+  --hex2: #f7c7a3;
+  --hex3: #fdf6a3;
+  --hex4: #c5f7e5;
+  --hex5: #c5dcf9;
+  --hex6: #e5c5f9;
+  --hex-frame: #D8D8D8;  /* outline for unfilled hex */
+  --persp: 900px;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  height: 100%;
+  /* Default body copy font across the site */
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Utility: visually hidden but screen-reader readable */
+.visually-hidden{
+  position:absolute !important; width:1px; height:1px; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ==========================================================
+   2) LOADING SCREEN (preloader): 4×4 grid + hex bar + sticker
+   ========================================================== */
+
+#preloader{
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: grid; place-items: center;
+}
+
+/* 4×4 grid container that scales well on mobile */
+.loader-grid{
+  width: min(1100px, 94vw);
+  height: min(780px, 90vh);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    repeat(4, 1fr);
+  gap: clamp(8px, 1.6vw, 18px);
+  padding: clamp(8px, 2vw, 20px);
+}
+
+/* ---------- A) Boot text (top-left quarter) ---------- */
+.boot{
+  grid-column: 1 / span 2;       /* quarter = 2×2 cells */
+  grid-row:    1 / span 2;
+  align-self:  start;             
+  justify-self: start;
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: 'NES', monospace;
+  color: var(--term);            /* #E0CB10 */
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.25;
+  /* subtle glow */
+  filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
+}
+
+.boot.is-ellipsis::after{
+  content: '...';
+  margin-left: .25em;
+  animation: dots 500ms steps(1, end) infinite;
+}
+@keyframes dots{ 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+
+
+
+
+
+/* ---------- B) Hex loader (center quarter) ---------- */
+.hexbar{
+  grid-column: 2 / span 2;   /* center quarter */
+  grid-row:    2 / span 2;
+  display: grid;
+  place-items: center;              /* center the tray */
+}
+
+.hexbar .loading-title {
+  font-family: 'NES', monospace;   /* NES font */
+  font-size: clamp(12px, 2.1vw, 18px);
+  letter-spacing: .18em;
+  color: var(--ink);
+  opacity: .95;
+  margin-bottom: 0.5rem; /* small spacing before tray */
+}
+
+/* The rounded, beveled “envelope” frame */
+.tray{
+  --tray-bg: rgba(0,0,0,0.18);             /* subtle fill */
+  --tray-edge: var(--hex-frame);           /* #D8D8D8 by default */
+  padding: clamp(10px, 1.8vw, 16px) clamp(14px, 2.4vw, 22px);
+  border: clamp(4px, .6vw, 6px) solid var(--tray-edge);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.1)) , var(--tray-bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),   /* inner highlight */
+    0 2px 0 rgba(0,0,0,0.25);               /* outer drop for depth */
+}
+
+/* Hexagon shape (default outline) */
+.hexrow{
+  display:flex; align-items:center; justify-content:center;
+  gap: clamp(6px, 1.2vw, 12px);              /* was 2, .8 and .8 */
+}
+
+.hexrow .hex{
+  width: clamp(28px, 5.6vw, 48px);
+  aspect-ratio: 1;
+  /* flat-top coordinates (clean silhouette) */
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+  background: transparent;
+  box-shadow: inset 0 0 0 3px var(--hex-frame);
+  transition: background .18s ease, box-shadow .18s ease, transform .18s ease;
+  --lift: 0px;
+  transform: rotate(30deg) translateY(var(--lift));
+}
+
+/* Color each hex by position  */
+.hexrow .hex:nth-child(1){ --hex-fill: var(--hex1); }
+.hexrow .hex:nth-child(2){ --hex-fill: var(--hex2); }
+.hexrow .hex:nth-child(3){ --hex-fill: var(--hex3); }
+.hexrow .hex:nth-child(4){ --hex-fill: var(--hex4); }
+.hexrow .hex:nth-child(5){ --hex-fill: var(--hex5); }
+.hexrow .hex:nth-child(6){ --hex-fill: var(--hex6); }
+
+.hexrow .hex.on{
+  background: var(--hex-fill);
+  box-shadow: inset 0 0 0 3px var(--hex-fill), 0 0 .45rem var(--hex-fill);
+  --lift: -1px;
+}
+
+
+
+
+/* Mobile: stack vertically */
+@media (max-width: 700px){
+  .loader-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .boot   { grid-column: 1; grid-row: 1; align-self: start; }
+  .loading-title { grid-column: 1; grid-row: 2; align-self: start; justify-self: center; }
+  .hexbar { grid-column: 1; grid-row: 2; }
+}
+
+/* ---------- C) Sticker image (bottom-right quarter) ----------
+   Add <img class="sticker" src="/assets/images/your-sticker.png" alt="">
+   This flips side-to-side and gently floats; replace with any PNG/WebP.
+*/
+.sticker{
+  grid-column: 3 / span 2;   /* bottom-right quarter */
+  grid-row:    3 / span 2;
+  align-self:  center; justify-self: center;
+  width: min(360px, 40vw);   /* responsive sizing */
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  user-select: none; pointer-events: none;
+  animation: stickerFloat 3.4s ease-in-out infinite,
+             stickerFlip  2.8s ease-in-out infinite alternate;
+  transform-origin: 50% 60%;
+}
+@keyframes stickerFloat{
+  0%   { transform: translateY(0)      rotate(0deg) }
+  50%  { transform: translateY(-6px)   rotate(-1.2deg) }
+  100% { transform: translateY(0)      rotate(0deg) }
+}
+@keyframes stickerFlip{
+  0%   { transform: scaleX(1) }
+  100% { transform: scaleX(-1) }  /* mirrors horizontally for “flipbook” feel */
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hexbar .hex, .hexbar .hex.on, .sticker{
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==============================================================
+   3) ONBOARDING / INSTRUCTIONS (4×4 grid, same quarter mapping)
+   ============================================================== */
+
+#onboarding{
+  position: fixed; inset: 0; z-index: 9998; background: var(--bg);
+  display: grid; place-items: center;
+}
+
+.ob-grid{
+  width: min(1100px, 94vw);
+  height: min(780px, 90vh);
+}
+
+/* 4×4 grid; each “quarter” spans 2×2 cells */
+.ob-grid-4x4{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    repeat(4, 1fr);
+  gap: clamp(8px, 1.6vw, 18px);
+  padding: clamp(8px, 2vw, 20px);
+}
+
+/* A) Typed greeting — top-left quarter */
+.ob-typed{
+  grid-column: 1 / span 2;
+  grid-row:    1 / span 1;
+  align-self:  start; justify-self: start;
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--term);
+  font-family: 'NES', monospace;   /* headline/accent font */
+  font-size: clamp(12px, 1.6vw, 14px);
+  line-height: 1.25;
+  filter: drop-shadow(0 0 .2rem rgba(224,203,16,.35));
+}
+
+.ob-typed.is-ellipsis::after{
+  content:'...';
+  margin-left:.25em;
+  animation:dots 500ms steps(1,end) infinite;
+}
+
+
+.ob-rhyme{
+  grid-column: 2 / span 2;   /* cols 2–3 (1 grid space on each side) */
+  grid-row:    2 / span 3;   /* rows 2–4 */
+  align-self:  start;
+  justify-self: stretch;
+  max-width: 42ch;
+  margin: clamp(10px, 1.6vw, 18px) auto 0;  /* push below title a bit */
+  text-align: left;
+  font-family: 'RelaxedMonoJP', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(14px, 2.0vw, 20px);
+  line-height: 1.55;
+}
+
+.ob-rhyme .ob-title{
+  margin: 0 0 clamp(10px,1.6vw,16px);
+  font-size: clamp(16px, 2.2vw, 22px);  /* larger than body */
+  font-weight: 600;                     /* heavier than body */
+  text-align: center;
+  color: var(--ink);
+}
+
+.ob-rhyme .ob-title .jp{
+  display: block;
+  font-size: clamp(13px, 1.8vw, 18px);  /* smaller than English title */
+  font-weight: 400;
+  opacity: .9;
+}
+
+/* C) Moomin area (if you keep an image here on onboarding, too) */
+.ob-moomin{
+  grid-column: 4 / span 1;  
+  grid-row:    1 / span 1;   
+  align-self:  start;
+  justify-self: end;
+
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;     /* modern browsers */
+  image-rendering: crisp-edges;   /* fallback */
+}
+
+@keyframes moominFloat{
+  0%   { transform: translateY(0) }
+  50%  { transform: translateY(-6px) }
+  100% { transform: translateY(0) }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .ob-moomin{ animation: none !important; }
+}
+
+/* --------------------------
+   4) Mobile / small screens
+   -------------------------- */
+@media (max-width: 700px){
+  .ob-grid-4x4{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .ob-typed { grid-column: 1; grid-row: 1; }
+  .ob-title { grid-column: 1; grid-row: 2; }
+  .ob-rhyme { grid-column: 1; grid-row: 3; margin-inline: 6vw; }
+  .ob-moomin{ grid-column: 1; grid-row: 4; justify-self: center; width: min(320px, 70vw); }
+}
+
+
+/* --------------------------
+   4) Main Page Layout
+   -------------------------- */
+
+:root {
+  --term: #E0CB10;
+  --gear: #38A0BD;
+
+.page {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 100svh;
+}
+
+/* Header wrapper */
+.site-hero {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.8vw, 20px);
+  padding-inline: clamp(8px, 2vw, 32px);
+  block-size: 25vh;                       /* takes top quarter of the page */
+  overflow: hidden;
+}
+
+
+
+/* Title */
+.site-title {
+  margin: 0;
+  font-family:"NES", monospace;
+  font-size: clamp(12px, min(5.2vw, 3.8vh), 38px);
+  line-height: 1;
+  letter-spacing: 0;
+  width:100%;
+  text-align:center;
+  white-space: nowrap;
+  color: var(--term);
+  text-shadow: 0 0 .2rem rgba(224,203,16,.35);
+  font-kerning: none;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+/* Gears */
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+.gear {
+  width: clamp(28px, 6vw, 64px);
+  aspect-ratio: 1;
+  display: block;
+  place-self:center;
+  pointer-events:none; 
+  animation: spin 16s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+/* pick a stroke width that reads at your smallest size */
+.gear-tl{ grid-area: 1 / 1 / 2 / 2; justify-self: start; align-self: start; }
+.gear-tr{ grid-area: 1 / 4 / 2 / 5; justify-self: end;   align-self: start; }
+
+
+#room {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#room > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

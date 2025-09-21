@@ -1,0 +1,157 @@
+<!-- html file for graveyard chemist website -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- to ensure good scaling on mobile device -->
+	
+    <title> Graveyard Chemist Website</title>
+	
+	<!-- Link to CSS files -->
+	<link rel="stylesheet" href="css/layout.css">
+	<script type="importmap">
+ 	{
+    	"imports": {
+    		"three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    		"three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    	}
+  	}
+  	</script>
+</head>
+<svg aria-hidden="true" class="svg-defs" width="0" height="0" style="position:absolute;left:-9999px;top:-9999px">
+  <defs>
+    <!-- Mint gradient -->
+    <linearGradient id="mintGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#63C3D6"/>
+      <stop offset="100%" stop-color="#1F6B7E"/>
+    </linearGradient>
+
+    <!-- “Rust” overlay: subtle monochrome noise, multiplied -->
+    <filter id="rusty" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+      <!-- keep only a faint alpha -->
+      <feComponentTransfer in="mono" result="noiseya">
+        <feFuncA type="table" tableValues="0 0 .06 .16"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="noiseya" mode="multiply"/>
+    </filter>
+
+    <!-- Your gear as a reusable symbol; filled by the gradient -->
+    <symbol id="gear-shape" viewBox="0 0 512 512">
+      <g fill="url(#mintGrad)">
+        <!-- Pasted Shape Paths for gear -->
+        <g transform="translate(0,512) scale(0.1,-0.1)">
+          <path d="M2560 5109 c-642 -67 -1224 -344 -1671 -799 -420 -429 -678 -985 -744
+          -1609 -21 -194 -21 -538 0 -732 87 -809 577 -1550 1311 -1967 462 -260 1012
+          -370 1544 -306 1219 144 2147 1169 2147 2409 0 1339 -1071 2424 -2410 2464
+          -85 3 -193 -1 -277 -10z m405 -334 c1133 -144 1989 -1133 1989 -2276 0 -1259
+          -1016 -2275 -2275 -2275 -1259 0 -2275 1016 -2275 2275 0 1143 856 2132 1989
+          2276 152 20 417 20 572 0z"/>
+          <path d="M2537 4310 c-318 -39 -614 -163 -867 -364 -109 -88 -288 -289 -355
+          -395 -72 -114 -153 -284 -185 -386 -192 -627 -23 -1317 436 -1776 242 -242
+          542 -395 888 -456 139 -25 401 -23 541 4 326 62 616 214 850 449 287 287 440
+          643 462 1069 11 218 -22 448 -97 658 -130 363 -394 672 -745 868 -322 181
+          -704 259 -1028 219z"/>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<body>
+	<!-- ============================= -->
+	<!-- for 5 sec preloader   -->
+	<!-- ============================= -->
+	<div id="preloader" aria-live="polite">
+		<div class="loader-grid"><!-- 4×4 grid defined in layout.css -->
+
+    	<!-- A) Boot text — top-left quarter (rows 1–2, cols 1–2) -->
+    	<!-- Filled by loader.js (ellipsis -> typewriter) -->
+    		<pre id="bootText" class="boot" aria-label="Boot messages"></pre>
+
+    		<!-- B) Hex tray — center quarter (rows 2–3, cols 2–3) -->
+    		<div id="hexLoader" class="hexbar" aria-label="Loading progress">
+				<div class="loading-title ff-nes" aria-hidden="true">Loading &hellip;</div>
+			<!-- Rounded beveled frame -->
+      			<div class="tray" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
+       			 <!-- Horizontal hexes (colors set via nth-child in CSS) -->
+        			<div class="hexrow">
+          				<span class="hex"></span>
+						<span class="hex"></span>
+						<span class="hex"></span>
+						<span class="hex"></span>
+						<span class="hex"></span>
+						<span class="hex"></span>
+        			</div>
+      			</div>
+    		</div>
+
+  		</div>
+	</div>
+		
+	
+	<!-- ================================ -->
+	<!-- About This Site Instruction Part -->
+	<!-- ================================ -->
+	<div id="onboarding" hidden role="dialog" aria-modal="true">
+ 
+		<!-- 4x4 grid container -->
+		<div class="ob-grid ob-grid-4x4">
+
+    		<!-- A) top-left quarter (typed animation) -->
+   			<pre id="ob-typed" class="boot ob-cell ob-typed"></pre>
+			
+
+
+    <!-- B) center quarter (instructions) -->
+    		<section class="ob-rhyme ob-cell" aria-label="How to explore">
+				<h3 class="ob-title ob-cell">
+ 				<span class="jp">ウェルカム〜(*´∀*)ﾉ"♡</span>
+				</h3>
+				<p>Click and wonder, peek and play,<br>
+				Strange creations lighting my way.<br>
+				Stay awhile, explore the view-<br>
+				This pace was made for me and you.</p>
+			</section>
+
+			<img id="ob-moomin" class="ob-moomin" 
+				src="assets/images/moomin.gif" 
+				alt="Moomin animation">
+			
+		</div>
+	</div>
+	
+	
+		
+    <!-- ============================= -->
+    <!-- HOMEPAGE (room & navigation)  -->
+    <!-- ============================= -->
+
+	<body class="page">
+  <!-- corner gears -->
+ 		<img class="gear gear-tl" src="assets/images/gears.svg" alt="" />
+  		<img class="gear gear-tr" src="assets/images/gears.svg" alt="" />
+
+  		<!-- header stays clean so title size doesn't change -->
+  		<header class="site-hero" aria-label="Site title">
+    		<h1 class="site-title">Graveyard Chemist's Playground!</h1>
+  		</header>
+
+  		<main id="room" aria-label="3D room"></main>
+	
+	
+    <!-- ============================= -->
+    <!-- JAVASCRIPT FILES              -->
+    <!-- ============================= -->
+    <!-- app.js is your entry point that imports loader.js, room.js, etc -->
+    <script type="module" src="js/app.js"></script>
+	</body>
+</html>
+		
+		
+		
