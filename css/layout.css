@@ -394,9 +394,6 @@ html, body {
 .gear-tl{ grid-area: 1 / 1 / 2 / 2; justify-self: start; align-self: start; }
 .gear-tr{ grid-area: 1 / 4 / 2 / 5; justify-self: end;   align-self: start; }
 
-@media (prefers-reduced-motion: reduce){
-  .gear{ animation:none; }
-}
 
 #room {
   position: relative;
