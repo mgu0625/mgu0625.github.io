@@ -351,6 +351,13 @@ html, body {
   overflow: hidden;
 }
 
+@media (max-width: 1400px){ .site-hero{ grid-area:1 / 2 / 2 / 5; } } /* span 3 cols */
+@media (max-width: 1100px){ .site-hero{ grid-area:1 / 1 / 2 / 5; } } /* span all 4 */
+
+@media (max-width:520px){
+  .site-title{ white-space:normal; text-align:center; }
+}
+
 /* Title */
 .site-title {
   font-family:"NES", monospace;
@@ -368,12 +375,15 @@ html, body {
   text-overflow: ellipsis;
 }
 
+html,body{height:100%;margin:0}
+
 @media (max-width: 520px){
   .title-nes{ white-space:normal; text-align:center; }
 }
 
 /* Gears */
 
+@keyframes spin { to { transform: rotate(360deg); } }
 .gear {
   width: clamp(28px, 6vw, 64px);
   aspect-ratio: 1;
@@ -385,17 +395,19 @@ html, body {
 }
 
 /* pick a stroke width that reads at your smallest size */
-.gear use,
-.gear path {
-  shape-rendering: crispEdges;
+.gear-tl{
+  grid-area:1 / 1 / 2 / 2;
+  justify-self:start; align-self:start;
+  margin:clamp(8px,2vw,24px);
+  animation-direction:normal;
+}
+.gear-tr{
+  grid-area:1 / 4 / 2 / 5;
+  justify-self:end; align-self:start;
+  margin:clamp(8px,2vw,24px);
+  animation-direction:reverse;
 }
 
-/* Optional: spin directions */
-.gear-tl { animation-direction: normal; } 
-.gear-tr { animation-direction: reverse; }
-
-
-
 @media (prefers-reduced-motion: reduce){
-  .gear{ animation: none; }
+  .gear{ animation:none; }
 }
