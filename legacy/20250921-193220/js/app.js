@@ -1,44 +1,54 @@
 // src/app.js
-import './style.css';
+import './style.css'; // or './css/layout.css' if that's where your CSS is
 import { initPreloader } from './loader.js';
 import { initOnboarding } from './onboarding.js';
 import { initMain } from './main.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const onboarding = document.getElementById('onboarding');
   const room = document.getElementById('room');
+  const onboarding = document.getElementById('onboarding');
 
-  // hide room until onboarding completes
+  const hasPreloader  = typeof initPreloader  === 'function';
+  const hasOnboarding = typeof initOnboarding === 'function';
+
+  const startMain = () => {
+    console.info('▶️ Booting 3D scene');
+    if (room) room.hidden = false;
+    initMain({ canvasSelector: '#experience-canvas' });
+  };
+
+  // If no preloader/onboarding implemented yet, just start
+  if (!hasPreloader && !hasOnboarding) {
+    return startMain();
+  }
+
+  // Otherwise, run the sequence: preloader -> onboarding -> main
   if (room) room.hidden = true;
 
-  // preload decorative images (put files in public/images/)
-  ['/images/moomin1_sticker.png', '/images/moomin2_sticker.png'].forEach((p) => {
-    const i = new Image();
-    i.src = new URL(p, import.meta.env.BASE_URL).href;
-  });
+  console.info('⏳ Starting preloader…');
+  try { hasPreloader && initPreloader(); } catch (e) { console.warn('preloader error', e); }
 
-  // Part 1: preloader
-  initPreloader?.();
+  window.addEventListener('preloader:done', () => {
+    console.info('✅ Preloader done');
+    if (hasOnboarding) {
+      console.info('🎬 Starting onboarding…');
+      try { initOnboarding({ totalMs: 10000 }); } catch (e) { console.warn('onboarding error', e); startMain(); }
+    } else {
+      startMain();
+    }
+  }, { once: true });
 
-  // When loading finishes, run onboarding (Part 2)
-  window.addEventListener(
-    'preloader:done',
-    () => {
-      initOnboarding?.({ totalMs: 10000 });
+  window.addEventListener('onboarding:done', () => {
+    console.info('✅ Onboarding done');
+    onboarding?.remove();
+    startMain();
+  }, { once: true });
 
-      // When onboarding ends, reveal room and start Three
-      window.addEventListener(
-        'onboarding:done',
-        () => {
-          onboarding?.remove();
-          if (room) room.hidden = false;
-
-          // boot the 3D scene
-          initMain({ canvasSelector: '#experience-canvas' });
-        },
-        { once: true }
-      );
-    },
-    { once: true }
-  );
+  // Safety net: if nothing fires, start anyway after 3s
+  setTimeout(() => {
+    if (room?.hidden) {
+      console.warn('⚠️ No events fired; starting main as fallback');
+      startMain();
+    }
+  }, 3000);
 });
