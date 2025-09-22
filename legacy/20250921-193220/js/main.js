@@ -1,56 +1,53 @@
-import "/css/layout.css";
+import "./css/layout.css";
 import * as THREE from 'three';
 
-const canvas = document.querySelector("#experience-canvas")
-const sizes ={
-    width: window.innerwidth,
-    height: window.innerHeight
+
+
+// scene
+const canvas = document.querySelector('#experience-canvas'); 
+const scene = new THREE.Scene();
+
+function getSize() {
+    const el = canvas.parentElement ?? canvas;
+    const w = el.clientWidth || window.innerWidth;
+    const h = el.clientHeight || window.innerHeight;
+    return { w, h };
 }
 
+let { w, h } = getSize();
+ 
+// camera
+const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
+camera.position.z = 5;
+scene.add(camera);
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 
-    75, 
-    sizes.width / sizes.height, 
-    0.1, 
-    1000 
-);
+// renderer
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setAnimationLoop(animate);
+document.body.appendChild(renderer.domElement);
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(sizes.width, sizes.height );
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-document.body.appendChild( renderer.domElement );
+
 
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const material = new THREE.MeshBasicMaterial( { color: 80FF80 } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
 camera.position.z = 5;
 
-
-// Event Listeners
-window.addEventListener("resize", ()=>{
-    sizes.width = window.innerWidth;
-    sizes.height = window.innerHeight;
-
-    // Update Camera
-    camera.aspect = sizes.width / sizes.height;
-    camera.updateProjectionMatrix();
-
-    // Update renderer
-    renderer,setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-});
-
-function animate() {}
-
-
-const render = () =>{
+function animate() {
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
-
     renderer.render(scene, camera);
-    
-    window. requestAnimationFrame(render);
-};
+}
+
+
+// Event Listeners
+window.addEventListener('resize', () => {
+  ({ w, h } = getSize());
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h, false);
+});
+
