@@ -1,1 +1,0 @@
-// for menu list, open/close elevator animation, and navigation
