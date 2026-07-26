@@ -10,8 +10,10 @@ import {
     CHAPTERS,
     EVIDENCE_TABS,
     LIMITS,
+    ORCA_LAYER_INTRO,
     ORCA_LAYERS,
     ORCA_PIPELINE,
+    ORCA_PROCESS_INTRO,
     PAGE_META,
     PCET_PATHWAYS,
     PCET_STEPS,
@@ -100,6 +102,45 @@ function StepControls({ index, count, onChange, label }) {
     );
 }
 
+function ContentBody({ body, className = "" }) {
+    if (!body) return null;
+
+    const blocks = Array.isArray(body)
+        ? body
+        : [{ type: "text", value: body }];
+
+    return (
+        <div className={className}>
+            {blocks.map((block, index) => {
+                if (typeof block === "string") {
+                    return (
+                        <p key={`text-${index}`}>
+                            {block}
+                        </p>
+                    );
+                }
+
+                if (block?.type === "equation") {
+                    return (
+                        <div
+                            className="dft-equation"
+                            key={`equation-${index}`}
+                        >
+                            <BlockMath math={block.value} />
+                        </div>
+                    );
+                }
+
+                return (
+                    <p key={`text-${index}`}>
+                        {block?.value ?? ""}
+                    </p>
+                );
+            })}
+        </div>
+    );
+}
+
 function TheoryPanel({ mode, theoryIndex, setTheoryIndex }) {
     const step = THEORY_STEPS[theoryIndex];
     const copy = step[mode];
@@ -107,18 +148,24 @@ function TheoryPanel({ mode, theoryIndex, setTheoryIndex }) {
     return (
         <div className="dft-subpanel">
             <div className="dft-subnav" role="tablist" aria-label="DFT history steps">
-                {THEORY_STEPS.map((item, index) => (
-                    <button
-                        key={item.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={index === theoryIndex}
-                        className={index === theoryIndex ? "is-active" : ""}
-                        onClick={() => setTheoryIndex(index)}
-                    >
-                        {item.short}
-                    </button>
-                ))}
+                {THEORY_STEPS.map((item, index) => {
+                    const isActive = index === theoryIndex;
+
+                    return (
+                        <button
+                            key={item.id}
+                            type="button"
+                            role="tab"
+                            aria-selected={isActive}
+                            className={isActive ? "is-active" : ""}
+                            onClick={() => setTheoryIndex(index)}
+                        >
+                            <span className="dft-subnav__label">
+                                {item.short}
+                            </span>
+                        </button>
+                    );
+                })}
             </div>
 
             <article
@@ -184,85 +231,219 @@ function TheoryPanel({ mode, theoryIndex, setTheoryIndex }) {
 }
 
 function PCETPanel({ mode, pathway, setPathway }) {
-  return (
-    <div className="dft-subpanel">
+    const activePathway =
+        PCET_PATHWAYS.find((item) => item.id === pathway) ??
+        PCET_PATHWAYS[0];
+
+    const activeCopy = activePathway?.[mode];
+
+    return (
+        <div className="dft-subpanel dft-pcet-panel">
             <div className="dft-literature">
                 <span>Literature model</span>
-                <strong>Excited [RuII(bpy)₂(bpz)]²⁺ quenched by hydroquinone</strong>
+
+                <strong>
+                    Excited [RuII(bpy)₂(bpz)]²⁺ quenched by
+                    hydroquinone
+                </strong>
             </div>
 
             <ol className="dft-mechanism">
-                {PCET_STEPS.map((step, index) => (
-                    <li key={step}>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        <p>{step}</p>
-                    </li>
-                ))}
+                {PCET_STEPS.map((step, index) => {
+                    const stepCopy = step?.[mode];
+
+                    return (
+                        <li
+                            key={
+                                step.id ??
+                                `pcet-step-${index}`
+                            }
+                            className={`dft-mechanism__step dft-mechanism__step--${step.id}`}
+                        >
+                            <span className="dft-mechanism__number">
+                                {step.number ??
+                                    String(index + 1).padStart(
+                                        2,
+                                        "0"
+                                    )}
+                            </span>
+
+                            <div className="dft-mechanism__copy">
+                                {stepCopy?.title && (
+                                    <h4>
+                                        {stepCopy.title}
+                                    </h4>
+                                )}
+
+                                <p>
+                                    {stepCopy?.body ?? ""}
+                                </p>
+                            </div>
+                        </li>
+                    );
+                })}
             </ol>
 
-            <div className="dft-transfer-key" aria-label="Transfer color key">
-                <span><i className="is-electron" /> Cyan: electron motion</span>
-                <span><i className="is-proton" /> Pink: proton motion</span>
+            <div
+                className="dft-transfer-key"
+                aria-label="Transfer color key"
+            >
+                <span>
+                    <i className="is-electron" />
+                    Cyan: electron motion
+                </span>
+
+                <span>
+                    <i className="is-proton" />
+                    Pink: proton motion
+                </span>
             </div>
 
-            <div className="dft-subnav" role="tablist" aria-label="PCET pathway families">
-                {PCET_PATHWAYS.map((item) => (
-                    <button
-                        key={item.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={pathway === item.id}
-                        className={pathway === item.id ? "is-active" : ""}
-                        onClick={() => setPathway(item.id)}
-                    >
-                        {item.label}
-                    </button>
-                ))}
+            <div
+                className="dft-subnav"
+                role="tablist"
+                aria-label="PCET explanation topics"
+            >
+                {PCET_PATHWAYS.map((item) => {
+                    const isActive =
+                        activePathway?.id === item.id;
+
+                    return (
+                        <button
+                            key={item.id}
+                            type="button"
+                            role="tab"
+                            aria-selected={isActive}
+                            className={
+                                isActive ? "is-active" : ""
+                            }
+                            onClick={() =>
+                                setPathway(item.id)
+                            }
+                        >
+                            <span className="dft-subnav__label">
+                                {item.label}
+                            </span>
+                        </button>
+                    );
+                })}
             </div>
 
-            <article className="dft-card dft-card--accent-split">
-                <h3>{PCET_PATHWAYS.find((item) => item.id === pathway)?.detail}</h3>
-                <p>
-                    {mode === "friends"
-                    ? "This control changes the conceptual pathway shown by the placeholder visual. It does not generate numerical kinetics."
-                    : "This is a qualitative pathway selector. A defensible energetic preference would require explicit thermodynamic, kinetic, and reaction-coordinate analysis."}
-                </p>
+            <article
+                className="
+                    dft-card
+                    dft-card--accent-split
+                    dft-pcet-card
+                "
+            >
+                <h3>{activeCopy?.title}</h3>
+
+                <ContentBody
+                    body={activeCopy?.body}
+                    className="dft-pcet-card__body"
+                />
             </article>
         </div>
     );
 }
 
+
 function OrcaPanel({ mode }) {
     return (
-        <div className="dft-subpanel">
-            <ol className="dft-pipeline">
-                {ORCA_PIPELINE.map((step, index) => (
-                    <li key={step.colleague}>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        <p>{step[mode]}</p>
-                    </li>
-                ))}
-            </ol>
+        <div className="dft-subpanel dft-orca-panel">
+            <section
+                className="dft-orca-section"
+                aria-labelledby="orca-process-title"
+            >
+                <p className="dft-orca-section__label">
+                    General calculation process
+                </p>
 
-            <div className="dft-layer-grid">
-                {ORCA_LAYERS.map((layer) => (
-                    <article key={layer.title} className="dft-card dft-card--compact">
-                        <h3>{layer.title}</h3>
-                        <p>{layer[mode]}</p>
-                    </article>
-                ))}
-            </div>
+                <h3
+                    id="orca-process-title"
+                    className="dft-orca-section__title"
+                >
+                    From molecular coordinates to a revised question
+                </h3>
+
+                <p className="dft-orca-section__intro">
+                    {ORCA_PROCESS_INTRO[mode]}
+                </p>
+
+                <ol className="dft-pipeline">
+                    {ORCA_PIPELINE.map((step, index) => (
+                        <li key={step.id}>
+                            <span className="dft-pipeline__number">
+                                {step.number ??
+                                    String(index + 1).padStart(2, "0")}
+                            </span>
+
+                            <div className="dft-pipeline__copy">
+                                <h4>{step[mode]}</h4>
+                                <p>{step[`${mode}Body`]}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            <section
+                className="dft-orca-section dft-orca-section--layers"
+                aria-labelledby="orca-layers-title"
+            >
+                <p className="dft-orca-section__label">
+                    Reading a calculation
+                </p>
+
+                <h3
+                    id="orca-layers-title"
+                    className="dft-orca-section__title"
+                >
+                    Three connected stages
+                </h3>
+
+                <p className="dft-orca-layer-intro">
+                    {ORCA_LAYER_INTRO[mode]}
+                </p>
+
+                <div className="dft-layer-grid">
+                    {ORCA_LAYERS.map((layer) => (
+                        <article
+                            key={layer.id}
+                            className="dft-card dft-card--compact dft-orca-layer-card"
+                        >
+                            <h3>
+                                {layer[`${mode}Title`] ?? layer.title}
+                            </h3>
+
+                            <p className="dft-orca-layer-card__context">
+                                {layer[`${mode}Context`]}
+                            </p>
+
+                            {layer[`${mode}Question`] && (
+                                <p className="dft-orca-layer-card__question">
+                                    {layer[`${mode}Question`]}
+                                </p>
+                            )}
+
+                            <p className="dft-orca-layer-card__details">
+                                {layer[`${mode}Details`]}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </section>
 
             <details className="dft-details">
                 <summary>View example ORCA output placeholder</summary>
                 <pre className="dft-output"><code>{`! B3LYP def2-SVP RIJCOSX CPCM(DMSO) OPT FREQ
-                * xyz 0 1
-                [optimized HYQ coordinates]
-                *
+* xyz 0 1
+[optimized HYQ coordinates]
+*
 
-                SCF CONVERGED
-                FREQUENCIES: [insert verified values]
-                TDDFT / EPR PROPERTY BLOCKS: [insert excerpts]`}</code></pre>
+SCF CONVERGED
+FREQUENCIES: [insert verified values]
+TDDFT / EPR PROPERTY BLOCKS: [insert excerpts]`}</code></pre>
             </details>
         </div>
     );
@@ -383,7 +564,7 @@ export default function DFTPage() {
     const [mode, setMode] = useState("friends");
     const [activeChapter, setActiveChapter] = useState(initialRoute.chapter);
     const [theoryIndex, setTheoryIndex] = useState(0);
-    const [pathway, setPathway] = useState("cpet");
+    const [pathway, setPathway] = useState("definition");
     const [evidenceIndex, setEvidenceIndex] = useState(0);
 
     const introRef = useRef(null);

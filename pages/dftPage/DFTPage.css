@@ -528,7 +528,8 @@
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
     padding-top: 0.45rem;
-    padding-bottom: 0.65rem;
+    padding-bottom: 0;
+    scroll-padding-bottom: 0;
 }
 
 
@@ -617,6 +618,82 @@
         transform 180ms ease;
 }
 
+.dft-subnav__label {
+    display: block;
+
+    color: inherit;
+
+    transition:
+        color 180ms ease,
+        filter 180ms ease;
+}
+
+.dft-subnav button.is-active {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 68%,
+            var(--c-metal-1)
+        );
+
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(
+                in srgb,
+                var(--c-glow-2) 11%,
+                var(--surface)
+            ),
+            color-mix(
+                in srgb,
+                var(--c-primary-1) 12%,
+                var(--surface)
+            )
+        );
+
+    box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 18%,
+            transparent
+        ),
+        0 0 0.7rem
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 10%,
+            transparent
+        );
+}
+
+.dft-subnav button.is-active .dft-subnav__label {
+    color: var(--c-glow-1);
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--c-glow-1),
+            var(--c-glow-2) 68%,
+            var(--c-glow-3)
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: var(--w-semibold, 600);
+
+    filter:
+        drop-shadow(
+            0 0 0.3rem
+            color-mix(
+                in srgb,
+                var(--c-glow-2) 25%,
+                transparent
+            )
+        );
+}
+
 .dft-step-controls button:is(:hover, :focus) {
     outline: none;
 
@@ -690,14 +767,84 @@
     transform: translateY(0) scale(0.97);
 }
 
+
+
 /* Cards and chapter content */
-.dft-card, .dft-details, .dft-literature, .dft-final-statement {
+.dft-card,
+.dft-details,
+.dft-literature,
+.dft-final-statement {
     border: 1px solid var(--dft-border);
     border-radius: 1rem;
-    background: color-mix(in srgb, var(--surface) 94%, transparent);
+
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(
+                in srgb,
+                var(--surface) 96%,
+                var(--c-primary-1)
+            ),
+            color-mix(
+                in srgb,
+                var(--surface) 98%,
+                var(--c-shadow)
+            )
+        );
 }
 
-.dft-card { position: relative; overflow: hidden; padding: clamp(1.1rem, 2vw, 1.6rem); }
+.dft-card {
+    position: relative;
+    overflow: hidden;
+
+    padding:
+        clamp(1.25rem, 1.8vw, 1.6rem)
+        clamp(1.3rem, 2vw, 1.8rem)
+        clamp(1.15rem, 1.7vw, 1.45rem);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 34%,
+            var(--dft-border)
+        );
+}
+
+.dft-card h3 {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 1rem;
+
+    color: var(--c-glow-1);
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--c-glow-1),
+            var(--c-glow-2) 68%,
+            var(--c-glow-3)
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 1.55vw, 1.55rem);
+    font-weight: var(--w-bold, 700);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+
+    filter:
+        drop-shadow(
+            0 0 0.35rem
+            color-mix(
+                in srgb,
+                var(--c-glow-2) 14%,
+                transparent
+            )
+        );
+}
 
 .dft-card::before {
     content: "";
@@ -716,8 +863,6 @@
 .dft-card--support::before { background: var(--c-glow-4); }
 
 .dft-card--limit::before { background: var(--c-glow-3); }
-
-.dft-card h3 { margin-bottom: 0.65rem; font-size: clamp(1.15rem, 2vw, 1.5rem); }
 
 .dft-card p, .dft-card li, .dft-details li, .dft-mechanism p, .dft-pipeline p {
     color: var(--c-text-muted);
@@ -746,7 +891,7 @@
 
 .dft-equation .katex {
     font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-}
+} 
 
 .dft-chip-list {
     display: flex;
@@ -983,9 +1128,176 @@
 
 .dft-transfer-key .is-proton { background: var(--c-glow-3); box-shadow: 0 0 0.7rem var(--c-glow-3); }
 
-.dft-pipeline { counter-reset: pipeline; }
+/* ORCA workflow */
+.dft-orca-panel {
+    gap: clamp(1.45rem, 2.4vw, 2.25rem);
+}
 
-.dft-layer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.dft-orca-section {
+    display: grid;
+    gap: 0.8rem;
+    min-width: 0;
+}
+
+.dft-orca-section--layers {
+    padding-top: 0.15rem;
+}
+
+.dft-orca-section__label {
+    width: fit-content;
+    margin: 0;
+    color: var(--c-metal-1);
+    font-family: var(--font-tech);
+    font-size: 0.7rem;
+    font-weight: var(--w-bold, 700);
+    letter-spacing: 0.13em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.dft-orca-section__title {
+    width: fit-content;
+    max-width: 100%;
+    margin: -0.18rem 0 0;
+    color: var(--dft-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 1.8vw, 1.72rem);
+    font-weight: var(--w-semibold, 600);
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+.dft-orca-section__intro,
+.dft-orca-layer-intro {
+    max-width: 70ch;
+    margin: 0;
+    color: color-mix(
+        in srgb,
+        var(--dft-cream) 82%,
+        var(--c-text-muted)
+    );
+    font-family: var(--font-tech);
+    font-size: clamp(0.9rem, 0.98vw, 1rem);
+    line-height: 1.65;
+}
+
+.dft-orca-layer-intro {
+    position: relative;
+    max-width: 74ch;
+    margin-bottom: 0.15rem;
+    padding: 0.78rem 0.95rem;
+    border-left: 3px solid
+        color-mix(in srgb, var(--c-glow-1) 68%, var(--c-glow-2));
+    background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--c-glow-2) 8%, transparent),
+        transparent 72%
+    );
+}
+
+.dft-pipeline {
+    counter-reset: pipeline;
+    gap: 0;
+    margin: 0.2rem 0 0;
+    border-top: 1px solid var(--dft-border);
+}
+
+.dft-pipeline li {
+    grid-template-columns: 2.35rem minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: start;
+    min-width: 0;
+    padding: 0.9rem 0.2rem;
+    border-bottom: 1px solid var(--dft-border);
+}
+
+.dft-pipeline__number {
+    width: 2.15rem !important;
+    margin-top: 0.05rem;
+}
+
+.dft-pipeline__copy {
+    display: grid;
+    gap: 0.28rem;
+    min-width: 0;
+}
+
+.dft-pipeline__copy h4 {
+    margin: 0;
+    color: var(--dft-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.1vw, 1.12rem);
+    font-weight: var(--w-semibold, 600);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.dft-pipeline__copy p {
+    max-width: 72ch;
+    margin: 0;
+    font-family: var(--font-tech);
+    font-size: clamp(0.82rem, 0.9vw, 0.92rem);
+    line-height: 1.55;
+}
+
+.dft-layer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.dft-orca-layer-card {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    gap: 0.78rem;
+    min-height: clamp(15.5rem, 21vw, 18rem);
+}
+
+.dft-orca-layer-card h3 {
+    margin-bottom: 0.12rem;
+}
+
+.dft-orca-layer-card__context,
+.dft-orca-layer-card__question,
+.dft-orca-layer-card__details {
+    margin: 0 !important;
+}
+
+.dft-orca-layer-card__context {
+    color: color-mix(
+        in srgb,
+        var(--dft-cream) 78%,
+        var(--c-text-muted)
+    ) !important;
+    font-family: var(--font-tech);
+    font-size: clamp(0.82rem, 0.88vw, 0.9rem);
+    line-height: 1.5 !important;
+}
+
+.dft-orca-layer-card__question {
+    align-self: start;
+    color: var(--dft-cream) !important;
+    font-family: var(--font-tech);
+    font-size: clamp(1rem, 1.12vw, 1.12rem);
+    font-weight: var(--w-medium, 500);
+    line-height: 1.48 !important;
+}
+
+.dft-orca-layer-card__details {
+    margin-top: auto !important;
+    padding-top: 0.72rem;
+    border-top: 1px solid
+        color-mix(in srgb, var(--c-metal-2) 32%, transparent);
+    color: color-mix(
+        in srgb,
+        var(--c-text-muted) 90%,
+        var(--dft-cream)
+    ) !important;
+    font-family: var(--font-tech);
+    font-size: clamp(0.76rem, 0.82vw, 0.84rem);
+    line-height: 1.5 !important;
+}
 
 .dft-output {
     overflow-x: auto;
@@ -1037,74 +1349,36 @@
 
 .dft-footer h2 { max-width: 22ch; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; }
 
+.dft-pcet-card__body {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.dft-pcet-card__body p {
+    max-width: 62ch;
+    margin: 0;
+}
+
+.dft-mechanism__copy {
+    min-width: 0;
+}
+
+.dft-mechanism__copy h4 {
+    margin: 0 0 0.3rem;
+    color: var(--dft-cream);
+    font-family: var(--font-tech);
+    font-size: 0.92rem;
+    line-height: 1.25;
+}
+
+.dft-mechanism__copy p {
+    margin: 0;
+}
+
 .dft-theory-card {
     display: grid;
     align-content: start;
-
     margin-top: 0.15rem;
-    padding:
-        clamp(1.25rem, 1.8vw, 1.6rem)
-        clamp(1.3rem, 2vw, 1.8rem)
-        clamp(1.15rem, 1.7vw, 1.45rem);
-
-    border-color:
-        color-mix(
-            in srgb,
-            var(--c-glow-2) 42%,
-            var(--dft-border)
-        );
-
-    background:
-        linear-gradient(
-            135deg,
-            color-mix(
-                in srgb,
-                var(--surface) 96%,
-                var(--c-primary-1)
-            ),
-            color-mix(
-                in srgb,
-                var(--surface) 98%,
-                var(--c-shadow)
-            )
-        );
-}
-
-.dft-theory-card h3 {
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 0 0.9rem;
-    margin-bottom: 1rem;
-
-    color: var(--c-glow-1);
-
-    background:
-        linear-gradient(
-            100deg,
-            var(--c-glow-1),
-            var(--c-glow-2) 68%,
-            var(--c-glow-3)
-        );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    font-family: var(--font-heading);
-    font-size: clamp(1.3rem, 1.55vw, 1.55rem);
-    font-weight: var(--w-bold, 700);
-    letter-spacing: -0.015em;
-    line-height: 1.1;
-
-    filter:
-        drop-shadow(
-            0 0 0.35rem
-            color-mix(
-                in srgb,
-                var(--c-glow-2) 14%,
-                transparent
-            )
-        );
 }
 
 .dft-theory-card > p:not(.dft-equation) {
@@ -1287,7 +1561,9 @@
 }
 
 .dft-stage__mgu {
+    display: block;
     margin: 0;
+    padding: 0;
     color: color-mix( in srgb, var(--dft-cream) 68%, var(--c-metal-1) );
     font-family: var(--font-display);
     font-size: 0.68rem;
@@ -1326,10 +1602,10 @@
     grid-column: 1 / -1;
     display: grid;
     justify-items: center;
-    gap: 0.48rem;
+    gap: 0.42rem;
     width: 100%;
     margin-top: clamp(1.4rem, 3vh, 2.5rem);
-    padding: 0.5rem 0 max(0.8rem, env(safe-area-inset-bottom));
+    padding: 0.4rem 0 max(0.18rem, env(safe-area-inset-bottom));
     background: transparent;
 }
 
@@ -1444,6 +1720,23 @@
 
     .dft-reading > h2 span { white-space: normal; }
 
+    .dft-orca-section__title {
+        font-size: clamp(1.2rem, 6vw, 1.5rem);
+    }
+
+    .dft-orca-layer-intro {
+        padding: 0.72rem 0.8rem;
+    }
+
+    .dft-pipeline li {
+        grid-template-columns: 2.15rem minmax(0, 1fr);
+        gap: 0.72rem;
+    }
+
+    .dft-orca-layer-card {
+        min-height: 0;
+    }
+
     .dft-subnav:not(.dft-subnav--wrap) {
         overflow-x: auto;
         overflow-y: hidden;
@@ -1461,5 +1754,98 @@
         animation-duration: 1ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 1ms !important;
+    }
+}
+
+/* PCET literature model */
+.dft-pcet-panel {
+    gap: clamp(0.9rem, 1.5vw, 1.2rem);
+}
+
+.dft-mechanism {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin: 0;
+}
+
+.dft-mechanism li {
+    position: relative;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    min-width: 0;
+    padding: 0.85rem;
+    border: 1px solid
+        color-mix(in srgb, var(--c-metal-2) 34%, transparent);
+    border-radius: 0.9rem;
+    background:
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--surface) 95%, var(--c-primary-1)),
+            color-mix(in srgb, var(--surface) 98%, var(--c-shadow))
+        );
+}
+
+.dft-mechanism li:last-child {
+    border-bottom: 1px solid
+        color-mix(in srgb, var(--c-metal-2) 34%, transparent);
+}
+
+.dft-mechanism__number {
+    flex: 0 0 auto;
+}
+
+.dft-mechanism__copy {
+    min-width: 0;
+}
+
+.dft-mechanism__copy h4 {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 0.32rem;
+    color: var(--dft-cream);
+    font-family: var(--font-heading);
+    font-size: clamp(0.94rem, 1.05vw, 1.08rem);
+    line-height: 1.15;
+}
+
+.dft-mechanism__copy p {
+    margin: 0;
+    font-family: var(--font-tech);
+    font-size: clamp(0.82rem, 0.88vw, 0.9rem);
+    line-height: 1.5;
+}
+
+.dft-mechanism__step--charge-transfer {
+    border-color:
+        color-mix(in srgb, var(--c-glow-1) 32%, var(--dft-border));
+}
+
+.dft-mechanism__step--concerted-pcet {
+    border-color:
+        color-mix(in srgb, var(--c-glow-3) 38%, var(--dft-border));
+}
+
+.dft-mechanism__step--concerted-pcet::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    border-radius: inherit;
+    background:
+        linear-gradient(
+            110deg,
+            color-mix(in srgb, var(--c-glow-1) 5%, transparent),
+            transparent 48%,
+            color-mix(in srgb, var(--c-glow-3) 6%, transparent)
+        );
+    pointer-events: none;
+}
+
+.dft-pcet-card h3 {
+    white-space: pre-line;
+}
+
+@media (max-width: 760px) {
+    .dft-mechanism {
+        grid-template-columns: 1fr;
     }
 }

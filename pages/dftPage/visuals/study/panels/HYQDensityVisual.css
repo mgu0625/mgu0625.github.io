@@ -1,27 +1,41 @@
 .dft-visual--hyq-density {
     isolation: isolate;
     overflow: visible;
-    background: radial-gradient( circle at 50% 48%, color-mix( in srgb, var(--c-glow-1) 7%, transparent ), transparent 39% ), radial-gradient( circle, color-mix( in srgb, var(--c-glow-2) 14%, transparent ), transparent 68% ), var(--surface);
 
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            color-mix(
+                in srgb,
+                var(--c-glow-1) 7%,
+                transparent
+            ),
+            transparent 39%
+        ),
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--c-glow-2) 14%,
+                transparent
+            ),
+            transparent 68%
+        ),
+        var(--surface);
 }
 
-
-.dft-chapter-hyq { position: absolute; inset: 0; }
-
-.dft-chapter-hyq__ring {
+.dft-chapter-hyq {
     position: absolute;
-    z-index: 1;
-    inset: 10.5%;
-    border: 1px solid color-mix( in srgb, var(--c-metal-1) 48%, var(--c-metal-3) );
-    border-radius: 50%;
-    box-shadow: inset 0 0 0.65rem color-mix( in srgb, var(--c-metal-1) 10%, transparent ), 0 0 0.7rem color-mix( in srgb, var(--c-metal-3) 14%, transparent );
-    pointer-events: none;
+    inset: 0;
 }
+
+/* Shared model canvas */
 
 .dft-chapter-hyq__canvas {
     position: absolute;
     z-index: 2;
     inset: 9%;
+
     overflow: hidden;
     border-radius: 50%;
     pointer-events: none;
@@ -29,17 +43,54 @@
 
 .dft-chapter-hyq__canvas canvas {
     display: block;
+
     width: 100% !important;
     height: 100% !important;
+
     background: transparent !important;
+}
+
+/* Friends mode */
+
+.dft-chapter-hyq__ring {
+    position: absolute;
+    z-index: 1;
+    inset: 10.5%;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--c-metal-1) 48%,
+            var(--c-metal-3)
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 0.65rem
+        color-mix(
+            in srgb,
+            var(--c-metal-1) 10%,
+            transparent
+        ),
+        0 0 0.7rem
+        color-mix(
+            in srgb,
+            var(--c-metal-3) 14%,
+            transparent
+        );
+
+    pointer-events: none;
 }
 
 .dft-hyq-callout-lines {
     position: absolute;
     z-index: 3;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: visible;
     pointer-events: none;
 }
@@ -52,34 +103,466 @@
     vector-effect: non-scaling-stroke;
 }
 
-.dft-hyq-callout-line--density { stroke: var(--c-glow-1); }
+.dft-hyq-callout-line--density {
+    stroke: var(--c-glow-1);
+}
 
-.dft-hyq-callout-line--molecule { stroke: var(--c-metal-1); }
+.dft-hyq-callout-line--molecule {
+    stroke: var(--c-metal-1);
+}
 
-.dft-hyq-callout-point--density { fill: var(--c-glow-1); filter: drop-shadow( 0 0 0.3rem var(--c-glow-1) ); }
+.dft-hyq-callout-point--density {
+    fill: var(--c-glow-1);
+    filter: drop-shadow(
+        0 0 0.3rem var(--c-glow-1)
+    );
+}
 
-.dft-hyq-callout-point--molecule { fill: var(--c-metal-1); filter: drop-shadow( 0 0 0.25rem var(--c-metal-1) ); }
+.dft-hyq-callout-point--molecule {
+    fill: var(--c-metal-1);
+    filter: drop-shadow(
+        0 0 0.25rem var(--c-metal-1)
+    );
+}
 
 .dft-hyq-callout {
     position: absolute;
     z-index: 4;
+
     padding: 0.32rem 0.46rem;
+
     border: 1px solid currentColor;
     border-radius: 999px;
-    background: color-mix( in srgb, var(--c-shadow) 88%, transparent );
+
+    background:
+        color-mix(
+            in srgb,
+            var(--c-shadow) 88%,
+            transparent
+        );
+
     font-family: var(--font-tech);
-    font-size: clamp( 0.55rem, 0.8vw, 0.66rem );
+    font-size: clamp(0.55rem, 0.8vw, 0.66rem);
     font-weight: var(--w-semibold);
     letter-spacing: 0.08em;
     line-height: 1;
     text-transform: uppercase;
     white-space: nowrap;
+
     pointer-events: none;
 }
 
-.dft-hyq-callout--density { top: 13%; left: 5%; color: var(--c-glow-1); }
+.dft-hyq-callout--density {
+    top: 13%;
+    left: 5%;
+    color: var(--c-glow-1);
+}
 
-.dft-hyq-callout--molecule { right: 5%; bottom: 12%; color: var(--c-metal-1); }
+.dft-hyq-callout--molecule {
+    right: 5%;
+    bottom: 12%;
+    color: var(--c-metal-1);
+}
+
+/* Colleague mode */
+/* Colleague mode */
+
+.dft-chapter-hyq--colleague
+.dft-chapter-hyq__canvas {
+    inset: 17%;
+}
+
+.dft-colleague-halo {
+    position: absolute;
+    z-index: 1;
+    inset: 18%;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 58%,
+            var(--c-metal-1)
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 1.1rem
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 11%,
+            transparent
+        );
+
+    transition:
+        border-color 200ms ease,
+        box-shadow 200ms ease;
+
+    pointer-events: none;
+}
+
+/* Many-electron state */
+
+.dft-chapter-hyq--colleague.is-theory-0
+.dft-colleague-halo {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--c-metal-1) 68%,
+            var(--c-glow-2)
+        );
+
+    box-shadow:
+        inset 0 0 1rem
+        color-mix(
+            in srgb,
+            var(--c-metal-1) 10%,
+            transparent
+        );
+}
+
+/* Hohenberg–Kohn state */
+
+.dft-chapter-hyq--colleague.is-theory-1
+.dft-colleague-halo {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 72%,
+            var(--dft-cream)
+        );
+
+    box-shadow:
+        inset 0 0 1.4rem
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 18%,
+            transparent
+        ),
+        0 0 0.85rem
+        color-mix(
+            in srgb,
+            var(--c-glow-2) 12%,
+            transparent
+        );
+}
+
+/* Kohn–Sham state */
+
+.dft-chapter-hyq--colleague.is-theory-2
+.dft-colleague-halo {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--c-glow-1) 70%,
+            var(--c-glow-2)
+        );
+
+    box-shadow:
+        inset 0 0 1.2rem
+        color-mix(
+            in srgb,
+            var(--c-glow-1) 13%,
+            transparent
+        );
+}
+
+.dft-colleague-overlay {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+/* One compact active label */
+
+.dft-colleague-overlay__copy {
+    position: absolute;
+    top: 5.5%;
+    left: 50%;
+
+    display: grid;
+    justify-items: center;
+    gap: 0.16rem;
+
+    width: max-content;
+    max-width: 72%;
+    padding: 0.38rem 0.75rem 0.45rem;
+
+    border-bottom: 1px solid
+        color-mix(
+            in srgb,
+            var(--c-metal-1) 55%,
+            var(--c-glow-2)
+        );
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            color-mix(
+                in srgb,
+                var(--c-shadow) 84%,
+                transparent
+            ) 18%,
+            color-mix(
+                in srgb,
+                var(--c-shadow) 84%,
+                transparent
+            ) 82%,
+            transparent
+        );
+
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.dft-colleague-overlay__copy > span {
+    color: var(--c-metal-1);
+    font-family: var(--font-tech);
+    font-size: clamp(0.44rem, 0.58vw, 0.54rem);
+    font-weight: var(--w-semibold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.dft-colleague-overlay__copy > strong {
+    color: var(--dft-cream);
+    font-family: var(--font-tech);
+    font-size: clamp(0.68rem, 0.9vw, 0.82rem);
+    font-weight: var(--w-semibold);
+    line-height: 1.15;
+}
+
+.dft-colleague-overlay__notation {
+    color: var(--c-glow-1);
+    font-size: clamp(0.72rem, 1vw, 0.9rem);
+    line-height: 1;
+}
+
+.dft-colleague-overlay__notation .katex {
+    font-size: 1em;
+}
+
+.dft-colleague-overlay__potentials .katex,
+.dft-colleague-overlay__potentials .katex * {
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Only visible during Kohn–Sham */
+
+.dft-colleague-overlay__potentials {
+    position: absolute;
+    left: 50%;
+    bottom: 16%;
+
+    display: flex;
+    gap: 0.35rem;
+
+    transform: translateX(-50%);
+}
+
+/* Minimal step indicator */
+
+.dft-colleague-overlay__progress {
+    position: absolute;
+    left: 50%;
+    bottom: 5.5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 34%;
+
+    transform: translateX(-50%);
+}
+
+.dft-colleague-overlay__progress::before {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: 0.7rem;
+    left: 0.7rem;
+
+    height: 1px;
+    content: "";
+
+    background:
+        color-mix(
+            in srgb,
+            var(--c-metal-2) 42%,
+            transparent
+        );
+}
+
+.dft-colleague-overlay__progress span {
+    display: grid;
+    width: 1.45rem;
+    aspect-ratio: 1;
+    place-items: center;
+
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--c-metal-2) 46%,
+            transparent
+        );
+
+    border-radius: 50%;
+
+    color:
+        color-mix(
+            in srgb,
+            var(--dft-cream) 55%,
+            var(--c-text-muted)
+        );
+
+    background: var(--surface);
+
+    font-family: var(--font-tech);
+    font-size: 0.46rem;
+    line-height: 1;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+.dft-colleague-overlay__progress span.is-complete {
+    border-color: var(--c-metal-1);
+    color: var(--c-metal-1);
+}
+
+.dft-colleague-overlay__progress span.is-active {
+    border-color: var(--c-glow-1);
+    color: var(--c-ink);
+    background: var(--c-glow-1);
+}
+
+.dft-theory-visual-overlay {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Many-electron interaction network */
+
+.dft-interaction-network {
+    fill: var(--c-glow-3);
+    stroke: var(--c-glow-3);
+    stroke-width: 0.45;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.dft-interaction-network path {
+    fill: none;
+    opacity: 0.58;
+    stroke-dasharray: 2.5 2.5;
+}
+
+.dft-interaction-network circle {
+    filter:
+        drop-shadow(
+            0 0 0.28rem
+            color-mix(
+                in srgb,
+                var(--c-glow-3) 65%,
+                transparent
+            )
+        );
+}
+
+/* Hohenberg–Kohn density scan */
+
+.dft-density-scan-line {
+    position: absolute;
+    top: 34%;
+    bottom: 27%;
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            var(--c-glow-1) 24%,
+            var(--c-glow-1) 76%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 0.65rem
+        color-mix(
+            in srgb,
+            var(--c-glow-1) 55%,
+            transparent
+        );
+
+    transform: translateX(-50%);
+}
+
+/* Kohn–Sham effective-potential construction */
+
+.dft-ks-potential-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dft-ks-potential-lines path {
+    fill: none;
+    stroke: var(--c-glow-1);
+    stroke-width: 0.55;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.dft-ks-potential-lines circle {
+    fill: var(--c-glow-1);
+    filter:
+        drop-shadow(
+            0 0 0.3rem
+            var(--c-glow-1)
+        );
+}
+
+.dft-theory-visual-overlay--ks
+.dft-colleague-overlay__potentials {
+    z-index: 2;
+}
+
+@media (max-width: 680px) {
+    .dft-chapter-hyq--colleague
+    .dft-chapter-hyq__canvas {
+        inset: 19%;
+    }
+
+    .dft-colleague-halo {
+        inset: 20%;
+    }
+
+    .dft-colleague-overlay__copy {
+        top: 4%;
+        max-width: 78%;
+    }
+
+    .dft-colleague-overlay__progress {
+        width: 42%;
+    }
+}
+
+/* Responsive */
 
 @media (max-width: 680px) {
     .dft-hyq-callout {
@@ -96,5 +579,26 @@
     .dft-hyq-callout--molecule {
         right: 4%;
         bottom: 10%;
+    }
+
+    .dft-colleague-flow__node {
+        width: 28%;
+        padding: 0.42rem;
+    }
+
+    .dft-colleague-flow__node--left {
+        left: 1.5%;
+    }
+
+    .dft-colleague-flow__node--right {
+        right: 1.5%;
+    }
+
+    .dft-colleague-flow__node--center {
+        width: 48%;
+    }
+
+    .dft-colleague-flow__node span {
+        display: none;
     }
 }

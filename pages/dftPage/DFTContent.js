@@ -26,14 +26,12 @@ export const CHAPTERS = [
             friends: {
                 eyebrow: "Why DFT exists",
                 title: "Studying Complex Systems\nWithout Tracking\nEvery Detail",
-                summary:
-                "Electrons influence properties and behavior of one another. Therefore, a complete many-electron (or complex system mechanistic) description becomes difficult very quickly. Density Functional Theory (DFT) replaces that overwhelming task with a more manageable map of where electron density is distributed.",
+                summary: "Electrons influence properties and behavior of one another. Therefore, a complete many-electron (or complex system mechanistic) description becomes difficult very quickly. Density Functional Theory (DFT) replaces that overwhelming task with a more manageable map of where electron density is distributed.",
             },
             colleague: {
                 eyebrow: "Density Functional Theory",
                 title: "From Wavefunctions to\nElectron Density",
-                summary:
-                "Molecular states and their energies arise from a system’s electronic structure, which is formally described by the many-electron wavefunction obtained from the Schrödinger equation. Because this wavefunction becomes too complex to solve directly for most molecules, density functional theory uses the electron density as a more manageable central variable for interpreting experiments, comparing structures, and predicting chemical behavior.",
+                summary: "Molecular states and their energies arise from a system’s electronic structure, which is formally described by the many-electron wavefunction obtained from the Schrödinger equation. Because this wavefunction becomes too complex to solve directly for most molecules, density functional theory uses the electron density as a more manageable central variable for interpreting experiments, comparing structures, and predicting chemical behavior.",
             },
         },
     },
@@ -45,15 +43,13 @@ export const CHAPTERS = [
         content: {
             friends: {
                 eyebrow: "Why hydroquinone matters",
-                title: "Why move an electron and a proton together?",
-                summary:
-                "Moving only charge or only a proton can create an unfavorable intermediate. In proton-coupled electron transfer, both motions influence the same reaction and can reduce that energetic cost. Hydroquinone is a useful model because it can donate both and form a measurable radical product.",
+                title: "Coupled Entwinement of\nElectron and Proton",
+                summary: `DFT helps us predict electron behavior in chemical reactions. PCET (proton-coupled electron transfer) looks at what happens when an electron and a proton move "at the same time". Under specific conditions, the finalized radicals can find stability long enough to study its thermodynamic and photophysical behavior. Nature uses this strategy in photosynthesis, water oxidation, and many other energy-changing reactions.`,
             },
             colleague: {
                 eyebrow: "Proton-coupled electron transfer",
-                title: "HYQ as a model donor in excited-state PCET",
-                summary:
-                "Hydroquinone is not required for all PCET chemistry, but it is a useful mechanistic model: its proton and electron-transfer coordinates are coupled, its behavior changes with protonation and environment, and oxidation can produce a semiquinone-type open-shell species accessible to computation and EPR comparison.",
+                title: "Proton-Coupled Reality",
+                summary: "DFT describes how electronic structure shapes molecular properties. Proton-coupled electron transfer, or PCET, applies this relationship to reactions in which electron and proton movement are linked. This coupling can prevent unstable charge buildup and lower the energetic cost of redox chemistry. It is central to photosynthesis, water oxidation, and many catalytic and biological processes.",
             },
         },
     },
@@ -65,15 +61,13 @@ export const CHAPTERS = [
         content: {
             friends: {
                 eyebrow: "The calculation engine",
-                title: "Software does not discover the answer by itself",
-                summary:
-                "A calculation begins with a chemical question. I choose a molecular model, let the structure relax, check that the result is stable, calculate relevant properties, and compare the outputs before deciding what they mean.",
+                title: "From Molecular Sketch to\nUnderstandable Evidence",
+                summary: "ORCA is a quantum-chemistry program that helps us explore molecular structures, energies, spectra, and electron behavior using calculations. Programs such as Avogadro make it possible to build and inspect a molecule before the calculation begins, while Chimera helps turn the finished data into structures, surfaces, and other visuals we can examine. Because these tools are open-source, free for academic use, or accessible for noncommercial work, they lower the barrier to scientific research and give curious learners a way to investigate questions that might otherwise require expensive software.",
             },
             colleague: {
                 eyebrow: "ORCA 6 workflow",
-                title: "A connected workflow from model construction to property prediction",
-                summary:
-                "ORCA provides one environment for geometry optimization, SCF and frequency validation, TDDFT, density and orbital analysis, and open-shell magnetic properties. Its value is not automation alone, but the ability to carry a theoretical question through a traceable sequence of approximations and validation steps.",
+                title: "From Molecular Model Construction to\nValidated Computational Evidence",
+                summary: "ORCA is a quantum-chemistry program used to calculate molecular structures, electronic states, spectra, and other properties that cannot be observed directly. Alongside programs such as Avogadro, which helps researchers build and inspect molecular structures, and Chimera, which helps visualize calculated structures and density data, these softwares create accessible paths from a chemical question to a testable computational model. Because these tools are open-source, free for academic use, or free for noncommercial use, they support both formal research and the curiosity-driven exploration that often leads to new questions.",
             },
         },
     },
@@ -86,14 +80,12 @@ export const CHAPTERS = [
             friends: {
                 eyebrow: "My HYQ calculations",
                 title: "What can one small molecule reveal?",
-                summary:
-                "The same HYQ model can be examined from several angles: its relaxed structure, how it vibrates, how it absorbs light, and where unpaired spin appears after oxidation. Together, those views connect molecular structure to properties that experiments can observe.",
+                summary: "The same HYQ model can be examined from several angles: its relaxed structure, how it vibrates, how it absorbs light, and where unpaired spin appears after oxidation. Together, those views connect molecular structure to properties that experiments can observe.",
             },
             colleague: {
                 eyebrow: "HYQ computational evidence",
                 title: "Geometry, vibrational, excited-state, and radical-state results",
-                summary:
-                "The calculation set connects an optimized ground-state structure with normal-mode validation, functional-dependent TDDFT transitions, and an open-shell radical model. The goal is not to claim a complete bimolecular mechanism, but to establish molecular evidence relevant to HYQ participation in PCET.",
+                summary: "The calculation set connects an optimized ground-state structure with normal-mode validation, functional-dependent TDDFT transitions, and an open-shell radical model. The goal is not to claim a complete bimolecular mechanism, but to establish molecular evidence relevant to HYQ participation in PCET.",
             },
         },
     },
@@ -106,14 +98,12 @@ export const CHAPTERS = [
             friends: {
                 eyebrow: "Interpretation",
                 title: "What does the computation let us say?",
-                summary:
-                "The calculations narrow the possibilities. They show plausible structures and properties and help explain what experimental signals might mean. They do not prove that every ruthenium–HYQ system follows one universal pathway.",
+                summary: "The calculations narrow the possibilities. They show plausible structures and properties and help explain what experimental signals might mean. They do not prove that every ruthenium–HYQ system follows one universal pathway.",
             },
             colleague: {
                 eyebrow: "Interpretation and limitations",
                 title: "Mechanistic relevance without overclaiming",
-                summary:
-                "These calculations support structure–property interpretation and comparison with spectroscopy, but HYQ-only calculations do not establish a full bimolecular rate law or uniquely distinguish CPET from stepwise ET–PT or PT–ET pathways. That requires an appropriately defined reaction coordinate and comparison under matched experimental conditions.",
+                summary:"These calculations support structure–property interpretation and comparison with spectroscopy, but HYQ-only calculations do not establish a full bimolecular rate law or uniquely distinguish CPET from stepwise ET–PT or PT–ET pathways. That requires an appropriately defined reaction coordinate and comparison under matched experimental conditions.",
             },
         },
     },
@@ -125,8 +115,7 @@ export const THEORY_STEPS = [
         short: "many-electron problem",
         friends: {
             title: "The full problem grows too quickly",
-            body:
-                "Each electron moves under the influence of the nuclei and every other electron around it. The wavefunction is the mathematical description of all those electrons; this includes possible positions, motions, and interactions. But as more electrons enter the picture, that story becomes far too complicated to follow directly. DFT takes a simpler route by focusing on where the electrons are most likely to be found.",
+            body: "Each electron moves under the influence of the nuclei and every other electron around it. The wavefunction is the mathematical description of all those electrons; this includes possible positions, motions, and interactions. But as more electrons enter the picture, that story becomes far too complicated to follow directly. DFT takes a simpler route by focusing on where the electrons are most likely to be found.",
             bullets: ["Many interacting particles", "Cannot understand all of its detailed behavior", "DFT offers a good approximate solution"],
         },
         colleague: {
@@ -198,11 +187,35 @@ export const THEORY_STEPS = [
             bullets: ["Solve simpler orbital equations", "Recover the target density", "Approximate the missing interactions"],
         },
         colleague: {
-            title: "The Kohn–Sham construction",
-            body:
-                "Kohn–Sham DFT decomposes the energy into noninteracting kinetic, external, Coulomb, and exchange-correlation terms. Practical accuracy therefore depends strongly on the selected functional and on whether the chemical problem matches that approximation’s strengths.",
-            bullets: ["Tₛ[ρ]", "Hartree contribution", "Approximate Eₓc[ρ]"],
-            equation: "E[ρ] = Tₛ[ρ] + Vₑₓₜ[ρ] + J[ρ] + Eₓc[ρ]",
+            title: "The Kohn–Sham Method",
+            body: [
+                {
+                    type: "text",
+                    value:
+                        "In 1965, Walter Kohn and Lu Jeu Sham turned the Hohenberg–Kohn theorems into a practical calculation. Their approach replaces the interacting many-electron system with an auxiliary set of non-interacting electrons constructed to reproduce the same ground-state density.",
+                },
+                {
+                    type: "equation",
+                    value: String.raw`\left[ -\frac{\hbar^2}{2m}\nabla^2 + V_{\mathrm{eff}}(\mathbf{r}) \right] \psi_i(\mathbf{r}) = \varepsilon_i\psi_i(\mathbf{r})`,
+                },
+                {
+                    type: "text",
+                    value: "The effective potential contains the attraction to the nuclei, the classical electron–electron repulsion, and an exchange–correlation term that collects the remaining many-body effects.",
+                },
+                {
+                    type: "equation",
+                    value: String.raw`V_{\mathrm{eff}}(\mathbf{r}) = V_{\mathrm{ext}}(\mathbf{r}) + V_{\mathrm{H}}(\mathbf{r}) + V_{\mathrm{XC}}(\mathbf{r})`,
+                },
+                {
+                    type: "text",
+                    value: "The equations are solved self-consistently. An initial density is used to build the effective potential, the resulting Kohn–Sham orbitals produce a new density, and the cycle repeats until the density stops changing.",
+                },
+                {
+                    type: "text",
+                    value: "The exact exchange–correlation functional remains unknown, so practical DFT depends on approximations to this term. Even so, the Hohenberg–Kohn theorems provide an exact foundation, while the Kohn–Sham construction makes that foundation usable. That balance between rigor and approximation is why DFT remains both widely used and scientifically fascinating.",
+                },
+            ],
+            bullets: [],
         },
     },
 ];
@@ -213,43 +226,249 @@ export const DFT_SCOPE = {
     limit: "A calculation is not, by itself, proof of a complete experimental mechanism.",
 };
 
+
 export const PCET_STEPS = [
-    "Light prepares the ruthenium MLCT excited state",
-    "Excited Ru encounters hydroquinone",
-    "Electron and proton transfer become coupled",
-    "Radical products reveal the transfer event",
+    {
+        id: "photoexcitation",
+        number: "01",
+        friends: {
+            title: "Light In",
+            body: "The Ru(II) complex absorbs light and enters an excited state.",
+        },
+        colleague: {
+            title: "Photoexcitation",
+            body: "The Ru(II) complex absorbs hν and is promoted to an electronically excited state.",
+        },
+    },
+    {
+        id: "charge-transfer",
+        number: "02",
+        friends: {
+            title: "Charge Shifts",
+            body: "An electron moves from ruthenium onto the bpz ligand, leaving Ru(III) and a ligand radical.",
+        },
+        colleague: {
+            title: "Metal-to-Ligand Charge Transfer",
+            body: "MLCT oxidizes Ru(II) to Ru(III) while reducing the bpz ligand to a radical state.",
+        },
+    },
+    {
+        id: "concerted-pcet",
+        number: "03",
+        friends: {
+            title: "HYQ Steps In",
+            body: "HYQ gives an electron back to ruthenium while passing a proton to the bpz ligand. Both movements happen together.",
+        },
+        colleague: {
+            title: "Concerted PCET with HYQ",
+            body: "HYQ transfers an electron to Ru(III), restoring Ru(II), while its proton transfers to the bpz ligand in the same elementary step.",
+        },
+    },
+    {
+        id: "radical-separation",
+        number: "04",
+        friends: {
+            title: "Radicals Separate",
+            body: "The partners separate with one radical on the bpz ligand of the Ru(II) complex and another on HYQ.",
+        },
+        colleague: {
+            title: "Radical Separation",
+            body: "The products separate into a Ru(II) complex with a bpz-centered ligand radical and an HYQ radical.",
+        },
+    },
 ];
+
 
 export const PCET_PATHWAYS = [
-    { id: "etpt", label: "ET → PT", detail: "Electron transfer followed by proton transfer" },
-    { id: "ptet", label: "PT → ET", detail: "Proton transfer followed by electron transfer" },
-    { id: "cpet", label: "CPET", detail: "Concerted proton–electron transfer" },
+    { 
+        id: "definition", 
+        label: "What is PCET", 
+        friends: {
+            title: "What is PCET",
+            body: "In PCET, an electron and a proton moves from one location (donor) to another (receiver). PCET can be either concerted or sequential under strict coupling conditions. In concerted PCET, the reaction moves in a single step, though not necessarily to the same destination. There are different mechanistic and directional class that exist under PCET reactions.",
+        }, 
+        colleague: {
+            title: "PCET Definition",
+            body: "The electron and proton are more likely to move together when sending either one alone would create an unstable intermediate. They may still move separately when the first step is energetically possible, even if the intermediate disappears too quickly to observe. Scientists piece together the pathway using reaction energies, rates, hydrogen–deuterium comparisons, and changes in solvent, temperature, pressure, or available energy.",
+        },
+
+    },
+    { 
+        id: "cnditions", 
+        label: "PCET Conditions", 
+        friends: {
+            title: "What Sets PCET Path?",
+            body: "The electron and proton are more likely to move together when sending either one alone would create an unstable intermediate. They may still move separately when the first step is energetically possible, even if the intermediate disappears too quickly to observe. Scientists piece together the pathway using reaction energies, rates, hydrogen–deuterium comparisons, and changes in solvent, temperature, pressure, or available energy.",
+        },
+        colleague: {
+            title: "Conditions Considered for PCET",
+            body: [
+                {
+                    type: "text",
+                    value: "Concerted transfer is favored when an electron-only or proton-only step would produce a high-energy intermediate. Strong coupling is often indicated by large changes in reduction potential after protonation or large changes in pKₐ after oxidation.",
+                },
+                {
+                    type: "text",
+                    value: "Sequential pathways can still occur when the first transfer is energetically accessible. The resulting intermediate may be too short-lived to detect, so its absence does not establish a concerted mechanism.",
+                },
+                {
+                    type: "text",
+                    value: "PCET mechanisms are therefore assigned using several forms of evidence. Thermodynamic estimates can exclude unfavorable sequential pathways, while kinetic isotope effects, driving-force trends, solvent effects, pressure, and temperature can reveal proton involvement and rate-limiting steps. No single measurement is usually conclusive.",
+                }
+            ],
+        },
+    },
+    { 
+        id: "nature-future", 
+        label: "Nature + Future", 
+        friends: {
+            title: "PCET in Nature &\nFuture of PCET Research",
+            body: "Plants use PCET during photosynthesis to move electrons without allowing too much charge to collect in one place, and similar chemistry helps organisms and catalysts split water. Researchers now combine experiments with computer models to understand these movements and design better catalysts and more efficient renewable energy sources.",
+        },
+        colleague: {
+            title: "PCET in Nature &\nFuture of PCET Research",
+            body: [
+                {
+                    type: "text",
+                    value: "Photosynthesis uses PCET to coordinate light-driven electron transfer with proton movement while avoiding excessive charge accumulation. Related strategies enable multistep processes such as biological and catalytic water oxidation.",
+                },
+                {
+                    type: "text",
+                    value: "Future work will combine spectroscopy, kinetics, and electronic-structure calculations to clarify how molecular structure and environment control PCET and to guide the design of more efficient catalysts.",
+                }
+            ],
+        },
+    },
 ];
 
+export const ORCA_PROCESS_INTRO = {
+    friends: "Theoretical calculations are built step by step and checked as they go. A molecule is drawn, translated into coordinates and settings, calculated, compared with evidence, and then revised when a new question appears.",
+    colleague: "A general electronic-structure workflow proceeds from molecular construction and model definition through numerical execution, validation, property extraction, comparison, and iterative refinement.",
+};
+
 export const ORCA_PIPELINE = [
-    { friends: "Draw the molecule", colleague: "Coordinates / charge / multiplicity" },
-    { friends: "Choose the rules", colleague: "Functional / basis / solvation / numerical settings" },
-    { friends: "Let the structure relax", colleague: "Geometry optimization" },
-    { friends: "Check that it is stable", colleague: "Frequency and SCF validation" },
-    { friends: "Ask specific questions", colleague: "TDDFT / density / spin / EPR properties" },
-    { friends: "Compare the answers", colleague: "Sensitivity analysis and experimental comparison" },
+    {
+        id: "build-molecule",
+        number: "01",
+        friends: "Build the molecule",
+        colleague: "Construct the molecular model",
+        friendsBody: "“Draw” the molecule in a program such as Avogadro, clean up its initial structure, and export the atomic positions as XYZ coordinates.",
+        colleagueBody: "Construct and inspect an initial molecular geometry, then export the atomic coordinates in XYZ or another ORCA-compatible format.",
+    },
+    {
+        id: "define-calculation",
+        number: "02",
+        friends: "Define the calculation",
+        colleague: "Define the electronic-structure model",
+        friendsBody: "Prepare the input file by choosing the molecular charge, spin, computational method, basis set, solvent model, and other numerical settings.",
+        colleagueBody: "Finalize the ORCA input by specifying charge, multiplicity, functional or method, basis set, solvation treatment, dispersion correction, and numerical controls.",
+    },
+    {
+        id: "run-verify",
+        number: "03",
+        friends: "Run and verify",
+        colleague: "Execute and validate the calculation",
+        friendsBody: "Run the calculation in quantum-chemistry software such as ORCA 6. Confirm that the job finished normally, met its convergence checks, and produced a chemically reasonable result.",
+        colleagueBody: "Run the ORCA 6 calculation and inspect termination status, SCF and geometry convergence, warnings, and any required vibrational validation before interpreting the output.",
+    },
+    {
+        id: "extract-compare",
+        number: "04",
+        friends: "Extract and compare",
+        colleague: "Extract properties and compare evidence",
+        friendsBody: "Collect the structures, energies, spectra, densities, or other properties needed for the question. Compare them with experiments, published literature, and related calculations.",
+        colleagueBody: "Extract the relevant geometries, energies, spectra, densities, spin properties, or response parameters and compare them with experimental observations, literature values, and sensitivity tests.",
+    },
+    {
+        id: "repeat",
+        number: "05",
+        friends: "Repeat",
+        colleague: "Refine and repeat",
+        friendsBody: "Use the output file as a starting point to adjust the structure, settings, or scientific question, then calculate again.",
+        colleagueBody: "Use the converged output as the basis for revised coordinates, settings, follow-up properties, or a refined hypothesis, and repeat the workflow as needed.",
+    },
 ];
+
+export const ORCA_LAYER_INTRO = {
+    friends: "A calculation involves more than drawing a molecule and pressing Run. First, we decide how the molecule should be represented. Then we check that the computer completed the calculation properly. Finally, we examine the results and ask whether they help answer the original chemical question.",
+    colleague: "A quantum-chemical calculation moves through three connected stages: defining the molecular model and its approximations, validating the numerical calculation, and interpreting the resulting chemical observables.",
+};
 
 export const ORCA_LAYERS = [
     {
-        title: "Decision layer",
-        friends: "What molecule am I describing, and what assumptions am I choosing?",
-        colleague: "Functional, basis set, charge, multiplicity, solvent model, and numerical settings.",
+        id: "model-setup",
+        title: "Model setup",
+        friendsTitle: "Setup choices",
+        colleagueTitle: "Model definition",
+
+        friendsContext:
+            "First, we define the molecule and the rules used to model it.",
+        colleagueContext:
+            "Defines the system and its theoretical approximations.",
+
+        friends:
+            "What molecule and assumptions am I using?",
+        colleague:
+            "Method, basis set, charge, spin, solvent, and numerical settings.",
+
+        friendsQuestion:
+            "What molecule and assumptions am I using?",
+        colleagueQuestion: null,
+
+        friendsDetails:
+            "Structure, charge, spin, solvent, and level of theory.",
+        colleagueDetails:
+            "Functional, basis set, multiplicity, solvation, and numerical controls.",
     },
     {
-        title: "Calculation layer",
-        friends: "Did the structure settle, and did the calculation finish cleanly?",
-        colleague: "SCF behavior, optimization steps, convergence, and vibrational validation.",
+        id: "calculation-validation",
+        title: "Calculation check",
+        friendsTitle: "Calculation check",
+        colleagueTitle: "Calculation validation",
+
+        friendsContext:
+            "Next, we check whether the calculation finished correctly.",
+        colleagueContext:
+            "Confirms numerical convergence and structural stability.",
+
+        friends:
+            "Did the calculation finish, and is the structure stable?",
+        colleague:
+            "SCF convergence, optimization, warnings, and frequency validation.",
+
+        friendsQuestion:
+            "Did the calculation finish, and is the structure stable?",
+        colleagueQuestion: null,
+
+        friendsDetails:
+            "Convergence, geometry changes, warnings, and stability checks.",
+        colleagueDetails:
+            "SCF behavior, optimization convergence, and vibrational confirmation.",
     },
     {
-        title: "Evidence layer",
-        friends: "Which calculated properties answer the chemical question?",
-        colleague: "Geometry, normal modes, spectra, density, spin density, g tensor, and hyperfine terms.",
+        id: "computed-evidence",
+        title: "Results and evidence",
+        friendsTitle: "Results and evidence",
+        colleagueTitle: "Computed evidence",
+
+        friendsContext:
+            "Finally, we examine the useful results.",
+        colleagueContext:
+            "Collects properties for comparison with experiment and literature.",
+
+        friends:
+            "Which results help answer the chemical question?",
+        colleague:
+            "Geometry, energies, spectra, density, spin, and magnetic properties.",
+
+        friendsQuestion:
+            "Which results help answer the chemical question?",
+        colleagueQuestion: null,
+
+        friendsDetails:
+            "Shape, vibrations, spectra, electron density, and spin.",
+        colleagueDetails:
+            "Geometry, normal modes, spectra, densities, g tensors, and hyperfine terms.",
     },
 ];
 

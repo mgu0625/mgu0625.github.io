@@ -4,10 +4,13 @@ import { useGLTF } from "@react-three/drei";
 
 import hyqModelUrl from "/src/assets/models/HYQModels/DFTPageLandingHYQAnimation.glb?url";
 
-export default function HYQMolde({
+export default function HYQModel({
     animate = false,
     densityOpacity = 0.28,
+    densityColor = "#7446B8",
     rotation = [0, 0, 0],
+    position = [0, 0, 0],
+    scale = 1,
 }) {
     const { scene } = useGLTF(hyqModelUrl);
     const model = useMemo(() => scene.clone(true), [scene]);
@@ -26,30 +29,38 @@ export default function HYQMolde({
             if (!isDensity) return;
 
             const material = object.material.clone();
+
             material.name = "ElectronCloud_Web";
             material.transparent = true;
             material.opacity = densityOpacity;
             material.depthWrite = false;
-            material.color.set("#7446B8");
+            material.color.set(densityColor);
             material.needsUpdate = true;
 
             object.material = material;
             object.renderOrder = 2;
+
             densityMaterials.push(material);
         });
 
         return () => {
             densityMaterials.forEach((material) => material.dispose());
         };
-    }, [model, densityOpacity]);
+    }, [model, densityColor, densityOpacity]);
 
     useFrame((_, delta) => {
         if (!animate || !modelRoot.current) return;
+
         modelRoot.current.rotation.y += delta * 0.12;
     });
 
     return (
-        <group ref={modelRoot} rotation={rotation}>
+        <group
+            ref={modelRoot}
+            rotation={rotation}
+            position={position}
+            scale={scale}
+        >
             <primitive object={model} dispose={null} />
         </group>
     );
